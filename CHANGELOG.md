@@ -4,9 +4,20 @@ All player-visible Mythic Prehistory releases are recorded here. Versions follow
 
 ## [Unreleased]
 
+## [1.3.1] - 2026-09-01
+
+Companion control, practical egg incubation, and bounded Nether lag prevention.
+
 ### Changed
 
 - Every Mythic-bonded prehistoric companion can be commanded to sit with an empty-hand sneak-right-click. Sitting persists through relogs, freezes movement every tick, and disables following and defense until released.
+- Tameable Beasts eggs now hatch in 10 minutes instead of the mod default of 6 hours 40 minutes. Existing placed eggs retain their saved timer.
+- Terrain pregeneration can target the Overworld, Nether, or End; the first Nether pass covers the players' current portal and fortress area.
+
+### Fixed
+
+- Sitting companions no longer keep stale defense targets or resume movement between ten-tick enforcement passes.
+- Documented that players and ordinary mobs can crush Tameable Beasts eggs by landing on them, and that Egg Rests are drops rather than incubators.
 
 ## [1.3.0] - 2026-08-31
 
@@ -85,5 +96,6 @@ Previous release and comparison baseline for 1.3.0.
 - Client mod count increased from 127 to 128; server mod count increased from 112 to 113.
 - Pack-owned mods and configuration became updater-managed while personal Prism data remained preserved.
 
+[1.3.1]: https://github.com/ariaxhan/mythic-prehistory/releases/tag/v1.3.1
 [1.3.0]: https://github.com/ariaxhan/mythic-prehistory/releases/tag/v1.3.0
 [1.2.0]: CHANGELOG.md#120---2026-08-31

@@ -61,5 +61,4 @@
 	#Egg Go Bad Timer
 	"Seconds Eggs Take To Go Bad In The Cold:" = 300
 	#Egg Hatching Timer
-	"Seconds Eggs Take To Mature And Hatch:" = 24000
-
+	"Seconds Eggs Take To Mature And Hatch:" = 600

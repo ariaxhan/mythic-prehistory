@@ -25,7 +25,7 @@ Third-party mod jars, worlds, backups, credentials, and player data are not incl
 
 ## Versions
 
-- Mythic Prehistory 1.3.0
+- Mythic Prehistory 1.3.1
 - Minecraft 1.20.1
 - Forge 47.4.22
 - Java 17

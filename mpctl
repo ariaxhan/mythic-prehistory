@@ -429,15 +429,16 @@ cmd_pregen() {
   local id; id="$(require_machine)"
   [[ "$(machine_state)" == "started" ]] || { err "start the server first: ./mpctl start"; exit 1; }
   local radius="${1:-32}"
-  local x="${2:-0}" z="${3:-0}"
+  local x="${2:-0}" z="${3:-0}" dimension="${4:-minecraft:overworld}"
   [[ "${radius}" =~ ^[0-9]+$ && "${radius}" -gt 0 && "${radius}" -le 10000 ]] || { err "radius must be an integer from 1 to 10000"; exit 1; }
   [[ "${x}" =~ ^-?[0-9]+$ && "${z}" =~ ^-?[0-9]+$ ]] || { err "coordinates must be integers"; exit 1; }
+  [[ "${dimension}" =~ ^minecraft:(overworld|the_nether|the_end)$ ]] || { err "unsupported dimension: ${dimension}"; exit 1; }
   require_mode "pregen" MAINTENANCE
-  say "pre-generating a ${radius}-chunk radius ($(( radius * 16 )) blocks) around spawn."
+  say "pre-generating a ${radius}-chunk radius ($(( radius * 16 )) blocks) in ${dimension}."
   dim "idle shutdown is paused while this runs. Nobody should be connected."
   say ""
   flyctl ssh console --app "${APP}" --machine "${id}" \
-    -C "/opt/mp/pregen.sh ${radius} ${x} ${z}"
+    -C "/opt/mp/pregen.sh ${radius} ${x} ${z} ${dimension}"
 }
 
 cmd_backup() {

@@ -65,4 +65,17 @@ safe_harness='flyctl(){
 safe_output="$(bash -c "${safe_harness}; ./mpctl console --live-safe 'clear a stuck effect' effect clear tester minecraft:slowness" 2>&1)"
 grep -q 'live-safe RCON: clear a stuck effect' <<<"${safe_output}"
 
+# Nether pregen must pass the dimension through to the remote script.
+maintenance_harness='flyctl(){
+  if [[ "$*" == *"machines list"* ]]; then
+    printf '\''[{"id":"test-machine","state":"started"}]\n'\''
+  elif [[ "$*" == *"ssh console"* ]]; then
+    printf '\''%s\n'\'' "$*"
+  else
+    return 99
+  fi
+}; security(){ printf '\''test-token\n'\''; }; curl(){ cat >/dev/null; printf '\''{"minecraft":{"ready":true,"process_state":"ready"},"players":{"count":0,"max":4,"names":[]},"backups":{}}\n'\''; }; export -f flyctl security curl'
+pregen_output="$(bash -c "${maintenance_harness}; ./mpctl pregen 16 -90 1075 minecraft:the_nether")"
+grep -q '/opt/mp/pregen.sh 16 -90 1075 minecraft:the_nether' <<<"${pregen_output}"
+
 echo "live-ops safety tests: pass"

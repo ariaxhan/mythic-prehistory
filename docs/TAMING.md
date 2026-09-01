@@ -89,13 +89,11 @@ state and animation support.
 
 ### Eggs and hatching
 
-Spawn eggs exist for Argentavis, Chikote, Crested Gecko, Giant Grasshopper, Giant Roly
-Poly, Grapteranodon, Ground Beetle, Penguin, Quetzalcoatlus, Racoon, Scarecrow and Shiny
-Beetle.
-
-Eggs hatch into a baby "if you are a good parent" (the mod's words), and failing that you
-get told "You are a bad parent." **Egg Rests** are looted from eggs you bred or found on
-nests, and are what you incubate on.
+Place a creature egg as a block in a loaded chunk. Pack `1.3.1` reduces hatching from the
+mod's accidental 6 hours 40 minutes to 10 minutes. Keep block light above 11 and fence the
+egg off: a player or ordinary living mob landing on it has a 1-in-3 chance to crush it.
+Tameable Beasts and Fur Golems cannot crush eggs. **Egg Rests** are crafting loot dropped
+when an egg block is broken; they are not an incubator.
 
 ## Mythic dinosaur companions
 

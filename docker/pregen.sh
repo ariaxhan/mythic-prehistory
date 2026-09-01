@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Pre-generate terrain around spawn using vanilla /forceload. No mods added.
 #
-#   pregen.sh [radius_chunks] [center_x] [center_z]
+#   pregen.sh [radius_chunks] [center_x] [center_z] [dimension]
 #
 # Works by force-loading chunks in batches, which makes the server generate any
 # that do not exist yet, then releasing them. Vanilla caps /forceload add at 256
@@ -19,8 +19,14 @@ source /opt/mp/lib.sh
 RADIUS="${1:-32}"        # in chunks; 32 chunks = 512 blocks in each direction
 CENTER_X="${2:-0}"
 CENTER_Z="${3:-0}"
+DIMENSION="${4:-minecraft:overworld}"
 TILE=16                  # 16x16 = 256 chunks, the vanilla per-command maximum
 SETTLE="${PREGEN_SETTLE_SECONDS:-20}"
+
+case "${DIMENSION}" in
+  minecraft:overworld|minecraft:the_nether|minecraft:the_end) ;;
+  *) die "unsupported dimension: ${DIMENSION}" ;;
+esac
 
 mc_running || die "the server is not running. Start it first."
 is_ready   || die "the server is not ready yet. Wait for READY, then retry."
@@ -35,7 +41,7 @@ fi
 PAUSE_FLAG="${DC_STATE}/pause-idle"
 cleanup() {
   log "releasing force-loaded chunks and saving"
-  rcon forceload remove all >/dev/null 2>&1 || true
+  rcon execute in "${DIMENSION}" run forceload remove all >/dev/null 2>&1 || true
   rcon save-all flush       >/dev/null 2>&1 || true
   rm -f "${PAUSE_FLAG}"
   log "idle shutdown re-enabled"
@@ -53,7 +59,7 @@ c_min_z=$(( CENTER_Z / 16 - RADIUS ))
 c_max_z=$(( CENTER_Z / 16 + RADIUS ))
 span=$(( (c_max_x - c_min_x + 1) * (c_max_z - c_min_z + 1) ))
 
-log "pre-generating ${span} chunks: radius ${RADIUS} chunks ($(( RADIUS * 16 )) blocks) around ${CENTER_X},${CENTER_Z}"
+log "pre-generating ${span} chunks in ${DIMENSION}: radius ${RADIUS} chunks ($(( RADIUS * 16 )) blocks) around ${CENTER_X},${CENTER_Z}"
 log "this is a heavy job and city generation is slow; expect several minutes"
 
 total_tiles=0
@@ -74,14 +80,14 @@ for (( x = c_min_x; x <= c_max_x; x += TILE )); do
     bx1=$(( x * 16 ));  bz1=$(( z * 16 ))
     bx2=$(( x2 * 16 )); bz2=$(( z2 * 16 ))
 
-    if ! out="$(rcon forceload add "${bx1}" "${bz1}" "${bx2}" "${bz2}" 2>&1)"; then
+    if ! out="$(rcon execute in "${DIMENSION}" run forceload add "${bx1}" "${bz1}" "${bx2}" "${bz2}" 2>&1)"; then
       log "WARN: forceload failed for tile ${x},${z}: ${out}"
       continue
     fi
 
     # Give the server time to actually generate the tile before releasing it.
     sleep "${SETTLE}"
-    rcon forceload remove all >/dev/null 2>&1 || true
+    rcon execute in "${DIMENSION}" run forceload remove all >/dev/null 2>&1 || true
 
     done_tiles=$(( done_tiles + 1 ))
     elapsed=$(( $(date +%s) - start_ts ))
@@ -95,4 +101,4 @@ for (( x = c_min_x; x <= c_max_x; x += TILE )); do
   done
 done
 
-log "pregen complete: ${span} chunks around ${CENTER_X},${CENTER_Z} in $(( $(date +%s) - start_ts ))s"
+log "pregen complete: ${span} chunks in ${DIMENSION} around ${CENTER_X},${CENTER_Z} in $(( $(date +%s) - start_ts ))s"
