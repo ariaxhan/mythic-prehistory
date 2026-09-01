@@ -1,0 +1,123 @@
+# =============================================================================
+# Fly.io app definition -- Mythic Prehistory (MC 1.20.1 / Forge 47.4.22)
+#
+# Sized down from deceasedcraft/: 105 server mods rather than 186, and two
+# players. 8 GB / 2 performance vCPU with a 6 GB heap, and a 20 GB volume
+# instead of 50 GB -- DeceasedCraft's 50 GB volume never exceeded 1.2 GB used
+# and cost $7.50/mo for the privilege.
+#
+# NOTE ON auto_start_machines: deliberately FALSE on the Minecraft port.
+# Port 25565 is continuously scanned by public server-list crawlers; leaving
+# wake-on-TCP enabled would let any stranger boot the machine and bill it.
+# Starting is therefore explicit (`./mpctl start`). This also matches the
+# required flow: start -> wait for ready -> connect.
+# =============================================================================
+
+app = "aria-mythic-prehistory"
+primary_region = "sjc"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  # Heap is 6 GB of the 8 GB machine, leaving ~2 GB for JVM native memory
+  # (metaspace, code cache, GC structures, direct buffers) plus the OS.
+  MC_HEAP = "6G"
+  MC_PORT = "25565"
+  STATUS_PORT = "8080"
+  RCON_PORT = "25575"
+
+  # Idle shutdown: 20 minutes with zero players connected, verified over RCON.
+  IDLE_SHUTDOWN_MINUTES = "20"
+
+  # Periodic backup cadence during a long session.
+  BACKUP_INTERVAL_MINUTES = "60"
+
+  # Keep only the two newest on-volume restore points.  Off-site retention is
+  # handled separately by r2.py; this prevents a full 20 GB game volume.
+  BACKUP_LOCAL_KEEP = "2"
+  R2_KEEP = "2"
+
+  # Crash-loop ceiling. After this many restarts inside one machine run the
+  # supervisor gives up, preserves logs + crash reports, and stops cleanly.
+  MAX_CRASH_RESTARTS = "3"
+
+  # Off-site backup prefix inside the R2 bucket.
+  R2_PREFIX = "mythic-prehistory"
+
+  # Whitelist ON. Unlike DeceasedCraft this server is whitelisted from the
+  # start: the hostname is being handed to a second player, and a whitelist is
+  # the difference between "two of us" and "whoever scans port 25565".
+  WHITELIST_ENABLED = "true"
+
+  # Server tuning for a 2-player session. This pack is entity-heavy (six
+  # creature mods), so simulation distance is the lever that matters most.
+  VIEW_DISTANCE = "8"
+  SIMULATION_DISTANCE = "6"
+  MAX_PLAYERS = "4"
+
+# --- Persistent state -------------------------------------------------------
+[[mounts]]
+  source = "mp_data"
+  destination = "/data"
+
+# --- Machine size -----------------------------------------------------------
+[[vm]]
+  # 2 vCPUs could not keep up with this pack's worldgen (Terralith + Tectonic +
+  # structure mods across 110 mods). Minecraft sizes its chunk-generation thread
+  # pool from core count, so 2 cores meant ~2 worldgen workers sharing silicon
+  # with 7 GC threads and the main tick: load sat at ~1.9/2.0 and exploring or
+  # teleporting into fresh terrain stalled the server for 20-30s at a time.
+  size = "performance-4x"
+  cpu_kind = "performance"
+  cpus = 4
+  memory = "8gb"
+
+# --- Graceful shutdown ------------------------------------------------------
+# SIGINT is what our supervisor traps. The timeout must comfortably cover
+# save-all + flush + backup before Fly escalates to SIGKILL.
+kill_signal = "SIGINT"
+kill_timeout = "300s"
+
+# --- Restart policy ---------------------------------------------------------
+# The supervisor handles crash-restart logic internally and always exits 0,
+# so a machine exit means "we decided to stop" and must NOT be restarted.
+[[restart]]
+  policy = "on-failure"
+  retries = 2
+
+# --- Minecraft (public TCP) -------------------------------------------------
+[[services]]
+  protocol = "tcp"
+  internal_port = 25565
+  auto_start_machines = false
+  auto_stop_machines = "off"
+  min_machines_running = 0
+
+  [[services.ports]]
+    port = 25565
+
+# --- Status endpoint (public HTTPS, token-gated in the app itself) -----------
+[[services]]
+  protocol = "tcp"
+  internal_port = 8080
+  auto_start_machines = false
+  auto_stop_machines = "off"
+  min_machines_running = 0
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  # Grace period is long because a 105-mod Forge server legitimately takes
+  # several minutes to reach ready. The status server itself binds within
+  # seconds, so this only ever guards genuinely dead containers.
+  [[services.tcp_checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "5m"

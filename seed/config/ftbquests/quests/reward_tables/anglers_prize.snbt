@@ -1,0 +1,30 @@
+{
+	id: "0000000000000007"
+	order_index: 6
+	loot_size: 1
+	title: "Anglers Prize"
+	use_title: true
+	icon: "aquaculture:neptunium_fishing_rod"
+	rewards: [
+		{
+			item: "aquaculture:diamond_fishing_rod"
+			weight: 1.0f
+		}
+		{
+			item: "aquaculture:tackle_box"
+			weight: 1.0f
+		}
+		{
+			item: "aquaculture:worm_farm"
+			weight: 1.0f
+		}
+		{
+			item: "aquaculture:diamond_fillet_knife"
+			weight: 1.0f
+		}
+		{
+			item: "aquaculture:obsidian_note_hook"
+			weight: 1.0f
+		}
+	]
+}

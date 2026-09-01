@@ -1,0 +1,340 @@
+{
+	id: "00000000000000FD"
+	group: ""
+	order_index: 3
+	filename: "arms_of_legend"
+	title: "Arms of Legend"
+	icon: "simplyswords:runic_katana"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	images: []
+	quests: [
+		{
+			title: "Forge an Iron Spear"
+			x: 0.0d
+			y: 0.0d
+			subtitle: "Simply Swords + Simply Bows"
+			description: [
+				"Vanilla gives you a sword. \u00a7eSimply Swords\u00a7r gives you an arsenal: katanas, glaives, rapiers, spears, sais, twinblades, greathammers, claymores."
+				""
+				"Every type fights differently: reach, speed, sweep, special moves. Forge an iron spear; the weapon that built Greece."
+			]
+			id: "00000000000000DC"
+			shape: "diamond"
+			size: 1.5d
+			tasks: [
+				{
+					id: "00000000000000D9"
+					type: "item"
+					item: "simplyswords:iron_spear"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000DA"
+					type: "item"
+					item: {
+						id: "minecraft:arrow"
+						Count: 16b
+					}
+				}
+				{
+					id: "00000000000000DB"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Kill 17 Prehistoric Problems"
+			x: 0.0d
+			y: 1.8d
+			subtitle: "Prove the steel"
+			description: [
+				"A weapon unproven is furniture."
+				""
+				"Kill \u00a7c17 of the old blood\u00a7r: ten raptors, four harpies, three terror birds. Vanilla monsters are a rounding error in this world; your steel answers to older things."
+			]
+			id: "00000000000000E2"
+			dependencies: [
+				"00000000000000DC"
+			]
+			tasks: [
+				{
+					id: "00000000000000DD"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:utahraptor"
+					value: 10L
+				}
+				{
+					id: "00000000000000DE"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:harpy"
+					value: 4L
+				}
+				{
+					id: "00000000000000DF"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:phorusrhacos"
+					value: 3L
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000E0"
+					type: "random"
+					table_id: 1L
+				}
+				{
+					id: "00000000000000E1"
+					type: "xp"
+					xp: 200
+				}
+			]
+		}
+		{
+			title: "Craft a Rapier"
+			x: -2.0d
+			y: 2.0d
+			subtitle: "Speed over weight"
+			description: [
+				"Fast and precise: the \u00a7brapier\u00a7r pokes holes in things before they reach you; the \u00a7bkatana\u00a7r rewards rhythm."
+				""
+				"Craft either in iron and learn a second fighting style."
+			]
+			id: "00000000000000E5"
+			optional: true
+			dependencies: [
+				"00000000000000DC"
+			]
+			tasks: [
+				{
+					id: "00000000000000E3"
+					type: "item"
+					item: "simplyswords:iron_rapier"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000E4"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Craft a Greathammer"
+			x: -2.0d
+			y: 3.5d
+			subtitle: "Subtlety is optional"
+			description: [
+				"Sometimes the answer is a \u00a7bgreathammer\u00a7r. It is slow. It does not care."
+				""
+				"Craft a greathammer or claymore in iron and flatten something that deserved it."
+			]
+			id: "00000000000000E8"
+			optional: true
+			dependencies: [
+				"00000000000000E5"
+			]
+			tasks: [
+				{
+					id: "00000000000000E6"
+					type: "item"
+					item: "simplyswords:iron_greathammer"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000E7"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Craft the Vine Bow"
+			x: 2.0d
+			y: 2.0d
+			subtitle: "Simply Bows"
+			description: [
+				"\u00a7eSimply Bows\u00a7r forges elements into archery: the \u00a7avine bow\u00a7r snares, the \u00a7bice bow\u00a7r freezes, the \u00a7ebee bow\u00a7r is exactly what it sounds like, and the \u00a75echo bow\u00a7r calls from the deep dark."
+				""
+				"Craft the vine bow to start; nature's snare is the huntress's oldest trick."
+			]
+			id: "00000000000000EC"
+			dependencies: [
+				"00000000000000DC"
+			]
+			tasks: [
+				{
+					id: "00000000000000E9"
+					type: "item"
+					item: "simplybows:vine_bow"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000EA"
+					type: "item"
+					item: {
+						id: "minecraft:arrow"
+						Count: 32b
+					}
+				}
+				{
+					id: "00000000000000EB"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Get a Runic Weapon"
+			x: 0.0d
+			y: 3.8d
+			subtitle: "The magic tier"
+			description: [
+				"\u00a7bRunic weapons\u00a7r are Simply Swords' enchanted tier: each carries a unique active power. Found in dungeon loot, or forged from rare materials."
+				""
+				"Claim any runic weapon, then pick a second from the arsenal: choose the blade that matches how you fight."
+			]
+			id: "00000000000000F0"
+			dependencies: [
+				"00000000000000E2"
+			]
+			tasks: [
+				{
+					id: "00000000000000ED"
+					type: "advancement"
+					advancement: "simplyswords:runic_weapon"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000EE"
+					type: "choice"
+					table_id: 6L
+				}
+				{
+					id: "00000000000000EF"
+					type: "xp"
+					xp: 300
+				}
+			]
+		}
+		{
+			title: "Get a Named Legendary Weapon"
+			x: 0.0d
+			y: 5.5d
+			subtitle: "Endgame steel"
+			description: [
+				"Above the runic tier sit Simply Swords' \u00a7dnamed uniques\u00a7r: the Watcher, Brimstone, Stormbringer, Soulrender, Mjolnir. Endgame steel with names that get remembered, found in the world's deepest loot."
+				""
+				"Claim any named unique. When you hold it, the pack's combat has nothing left to teach you."
+			]
+			id: "00000000000000F4"
+			shape: "star"
+			dependencies: [
+				"00000000000000F0"
+			]
+			tasks: [
+				{
+					id: "00000000000000F1"
+					type: "checkmark"
+					title: "Obtain any named unique weapon"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000F2"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000000F3"
+					type: "xp"
+					xp: 500
+				}
+			]
+		}
+		{
+			title: "Find Mjolnir (Yes, That One)"
+			x: -3.0d
+			y: 5.5d
+			subtitle: "A guest from the north"
+			description: [
+				"Simply Swords hides true uniques: named weapons with their own legends. One of them is \u00a7bMjolnir\u00a7r. Yes, that Mjolnir. Wrong pantheon, right attitude."
+				""
+				"Find it. The book will know the moment it is in your hand."
+			]
+			id: "00000000000000F8"
+			shape: "star"
+			optional: true
+			dependencies: [
+				"00000000000000F0"
+			]
+			tasks: [
+				{
+					id: "00000000000000F5"
+					type: "advancement"
+					advancement: "simplyswords:mjolnir"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000F6"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000000F7"
+					type: "xp"
+					xp: 500
+				}
+			]
+		}
+		{
+			title: "Enchant Literally Anything"
+			x: -3.0d
+			y: 3.8d
+			subtitle: "Ensorcellation"
+			description: [
+				"\u00a7dEnsorcellation\u00a7r loads the enchanting table with new words: Vorpal, Frost Aspect, Hunter's Bounty, Exp Boost, and a shelf more."
+				""
+				"Build the full 15-bookshelf level-30 table before chasing the strongest rolls. Enchanting is the renewable route; dungeon books and librarian trades are the targeted route."
+				""
+				"The pack leaves Ensorcellation's power curve intact: no free max levels and no inflated enchantability. Backpack enchantment books also show descriptions now, so Linking, Packing, Rationing, and Back Protection are choices instead of mystery text."
+			]
+			id: "00000000000000FC"
+			dependencies: [
+				"00000000000000E2"
+			]
+			tasks: [
+				{
+					id: "00000000000000F9"
+					type: "advancement"
+					advancement: "minecraft:story/enchant_item"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000FA"
+					type: "item"
+					item: {
+						id: "minecraft:lapis_lazuli"
+						Count: 16b
+					}
+				}
+				{
+					id: "00000000000000FB"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+	]
+}

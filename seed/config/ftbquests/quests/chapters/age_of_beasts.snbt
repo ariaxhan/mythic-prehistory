@@ -1,0 +1,517 @@
+{
+	id: "0000000000000091"
+	group: ""
+	order_index: 1
+	filename: "age_of_beasts"
+	title: "The Age of Beasts"
+	icon: "shineals_prehistoric_expansion:utahraptor_skeleton"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	images: []
+	quests: [
+		{
+			title: "Go Look at a Dodo"
+			x: 0.0d
+			y: 0.0d
+			subtitle: "ShineaL's Prehistoric Expansion"
+			description: [
+				"The flood that ended the age of titans never reached this land."
+				""
+				"Somewhere nearby, a \u00a7adodo\u00a7r is making terrible decisions. Find one and \u00a7blook at it\u00a7r for a moment; this quest completes on eye contact."
+				""
+				"It will not be the strangest thing you see today."
+			]
+			id: "0000000000000042"
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [
+				{
+					id: "000000000000003F"
+					type: "observation"
+					observe_type: 4
+					timer: 10L
+					to_observe: "shineals_prehistoric_expansion:dodo"
+					title: "Look at a dodo"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000040"
+					type: "random"
+					table_id: 1L
+				}
+				{
+					id: "0000000000000041"
+					type: "xp"
+					xp: 100
+				}
+			]
+		}
+		{
+			title: "Stare Down a Triceratops"
+			x: -3.0d
+			y: 1.2d
+			subtitle: "The gentle giants"
+			description: [
+				"\u00a7aMammoths\u00a7r and \u00a7atriceratops\u00a7r wander the cold and temperate wilds: slow, enormous, and mostly peaceful. Mostly."
+				""
+				"Stand before a triceratops and hold its gaze."
+			]
+			id: "0000000000000045"
+			dependencies: [
+				"0000000000000042"
+			]
+			tasks: [
+				{
+					id: "0000000000000043"
+					type: "observation"
+					observe_type: 4
+					timer: 10L
+					to_observe: "shineals_prehistoric_expansion:triceratops"
+					title: "Look at a triceratops"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000044"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Hunt 3 Mammoths, Cook the Meat"
+			x: -3.0d
+			y: 2.7d
+			subtitle: "Big game hunting"
+			description: [
+				"The big herbivores are walking larders, if you have the nerve."
+				""
+				"Bring down a mammoth and cook its meat: one of the best early foods in the pack. Hunt like your ancestors did. Then cook it, unlike your ancestors."
+			]
+			id: "000000000000004A"
+			dependencies: [
+				"0000000000000045"
+			]
+			tasks: [
+				{
+					id: "0000000000000046"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:mammoth"
+					value: 3L
+				}
+				{
+					id: "0000000000000047"
+					type: "item"
+					item: "shineals_prehistoric_expansion:cooked_mammoth_meat"
+					count: 12L
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000048"
+					type: "item"
+					item: {
+						id: "shineals_prehistoric_expansion:sickle"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000049"
+					type: "random"
+					table_id: 12L
+				}
+			]
+		}
+		{
+			title: "Kill 8 Raptors (They Started It)"
+			x: -1.5d
+			y: 1.5d
+			subtitle: "Fast, mean, numerous"
+			description: [
+				"\u00a7cUtahraptors\u00a7r hunt in the hills and they do not wait for you to be ready."
+				""
+				"Kill eight. Spears outrange claws; that is the entire lesson, taught eight times."
+			]
+			id: "000000000000004E"
+			dependencies: [
+				"0000000000000042"
+			]
+			tasks: [
+				{
+					id: "000000000000004B"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:utahraptor"
+					value: 8L
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000004C"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "000000000000004D"
+					type: "xp"
+					xp: 200
+				}
+			]
+		}
+		{
+			title: "Kill 3 Carnotaurus"
+			x: -1.5d
+			y: 3.2d
+			subtitle: "The top of the old food chain"
+			description: [
+				"Above the raptors sit the true monsters: the \u00a7ccarnotaurus\u00a7r and, in the rivers, the \u00a7cspinosaurus\u00a7r, the largest predator that ever walked."
+				""
+				"Kill three carnotaurus. Not one: three. An apex is not dethroned by an accident."
+			]
+			id: "0000000000000052"
+			shape: "star"
+			dependencies: [
+				"000000000000004E"
+			]
+			tasks: [
+				{
+					id: "000000000000004F"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:carnotaurus"
+					value: 3L
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000050"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000051"
+					type: "xp"
+					xp: 500
+				}
+			]
+		}
+		{
+			title: "Find an Ammonite (Swimming Fossil)"
+			x: 0.0d
+			y: 2.0d
+			subtitle: "Old things in deep water"
+			description: [
+				"The oceans kept their monsters too: armored \u00a7bdunkleosteus\u00a7r, sea scorpions, and \u00a7bammonites\u00a7r coiled like living fossils."
+				""
+				"Find an ammonite in the water and watch it a moment."
+			]
+			id: "0000000000000055"
+			dependencies: [
+				"0000000000000042"
+			]
+			tasks: [
+				{
+					id: "0000000000000053"
+					type: "observation"
+					observe_type: 4
+					timer: 10L
+					to_observe: "shineals_prehistoric_expansion:ammonite"
+					title: "Look at an ammonite"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000054"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Find a Hippocampus (Horse-Fish)"
+			x: 0.0d
+			y: 3.5d
+			subtitle: "Myth, saddled"
+			description: [
+				"The \u00a7bhippocampus\u00a7r: half horse, half fish, all Greek. They swim the warm seas and they \u00a7bcan be ridden\u00a7r."
+				""
+				"Find one. Earn its trust. The ocean stops being an obstacle."
+			]
+			id: "0000000000000059"
+			dependencies: [
+				"0000000000000055"
+			]
+			tasks: [
+				{
+					id: "0000000000000056"
+					type: "observation"
+					observe_type: 4
+					timer: 10L
+					to_observe: "shineals_prehistoric_expansion:hippocampus"
+					title: "Find a hippocampus"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000057"
+					type: "item"
+					item: {
+						id: "minecraft:saddle"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000058"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Kill 5 Harpies"
+			x: 1.5d
+			y: 1.5d
+			subtitle: "Where myth meets pterosaur"
+			description: [
+				"\u00a7cHarpies\u00a7r nest in the high places: winged, greedy, and straight out of the old stories. \u00a7bPteranodons\u00a7r share their sky."
+				""
+				"Kill five harpies. The old heroes had to; so do you, five times."
+			]
+			id: "000000000000005D"
+			dependencies: [
+				"0000000000000042"
+			]
+			tasks: [
+				{
+					id: "000000000000005A"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:harpy"
+					value: 5L
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000005B"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "000000000000005C"
+					type: "xp"
+					xp: 200
+				}
+			]
+		}
+		{
+			title: "Kill 3 Terror Birds"
+			x: 1.5d
+			y: 3.2d
+			subtitle: "Birds used to be worse"
+			description: [
+				"The \u00a7cphorusrhacos\u00a7r: three meters of flightless murder-bird. It survived the dinosaurs. Your move."
+				""
+				"Kill three, then take a dodo egg home as a palate cleanser."
+			]
+			id: "0000000000000061"
+			dependencies: [
+				"000000000000005D"
+			]
+			tasks: [
+				{
+					id: "000000000000005E"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:phorusrhacos"
+					value: 3L
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000005F"
+					type: "item"
+					item: {
+						id: "shineals_prehistoric_expansion:cooked_dodo_egg"
+						Count: 4b
+					}
+				}
+				{
+					id: "0000000000000060"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Fossils for the Future Museum"
+			x: 3.0d
+			y: 2.0d
+			subtitle: "Paleontology, freelance"
+			description: [
+				"Not everything survived. Skeletons of the fallen eras are buried and displayed across the world: utahraptors mid-lunge, dodos mid-regret."
+				""
+				"Collect an ammonite shell and any skeleton piece for your future museum."
+			]
+			id: "0000000000000066"
+			optional: true
+			dependencies: [
+				"0000000000000055"
+			]
+			tasks: [
+				{
+					id: "0000000000000062"
+					type: "item"
+					item: "shineals_prehistoric_expansion:ammonite_shell"
+					count: 3L
+				}
+				{
+					id: "0000000000000063"
+					type: "item"
+					item: "shineals_prehistoric_expansion:dodo_skeleton"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000064"
+					type: "random"
+					table_id: 12L
+				}
+				{
+					id: "0000000000000065"
+					type: "xp"
+					xp: 200
+				}
+			]
+		}
+		{
+			title: "Claim 4 Therizinosaurus Claws"
+			x: -3.0d
+			y: 4.2d
+			subtitle: "Harvested from the source"
+			description: [
+				"The \u00a7ctherizinosaurus\u00a7r carries meter-long claws: the closest thing nature ever made to the scythe of Kronos."
+				""
+				"Claim one. Weapon component, trophy, and conversation piece."
+			]
+			id: "000000000000006B"
+			dependencies: [
+				"000000000000004A"
+			]
+			tasks: [
+				{
+					id: "0000000000000067"
+					type: "item"
+					item: "shineals_prehistoric_expansion:therizinosaurus_claw"
+					count: 4L
+				}
+				{
+					id: "0000000000000068"
+					type: "advancement"
+					advancement: "shineals_prehistoric_expansion:that_sure_is_sick"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000069"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "000000000000006A"
+					type: "xp"
+					xp: 300
+				}
+			]
+		}
+		{
+			title: "Build a Boat from Dino Wood"
+			x: 3.0d
+			y: 3.5d
+			subtitle: "Prehistoric shipwright"
+			description: [
+				"The ginkgo and juniper trees of the old world make fine boats, and ShineaL's has an advancement waiting for the first captain."
+				""
+				"Craft a boat from prehistoric wood and launch it."
+			]
+			id: "000000000000006E"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"0000000000000066"
+			]
+			tasks: [
+				{
+					id: "000000000000006C"
+					type: "advancement"
+					advancement: "shineals_prehistoric_expansion:sailin_the_seas"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000006D"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Six Skeletons for the Museum"
+			x: 3.0d
+			y: 5.0d
+			subtitle: "Six species, honored"
+			description: [
+				"One skeleton is a curiosity. Six are a museum wing."
+				""
+				"Collect the skeletons of six different extinct creatures. Your future menagerie needs a hall of the honored dead."
+			]
+			id: "0000000000000077"
+			shape: "star"
+			dependencies: [
+				"0000000000000066"
+			]
+			tasks: [
+				{
+					id: "000000000000006F"
+					type: "item"
+					item: "shineals_prehistoric_expansion:utahraptor_skeleton"
+				}
+				{
+					id: "0000000000000070"
+					type: "item"
+					item: "shineals_prehistoric_expansion:dodo_skeleton"
+				}
+				{
+					id: "0000000000000071"
+					type: "item"
+					item: "shineals_prehistoric_expansion:anurognathus_skeleton"
+				}
+				{
+					id: "0000000000000072"
+					type: "item"
+					item: "shineals_prehistoric_expansion:anomalocaris_skeleton"
+				}
+				{
+					id: "0000000000000073"
+					type: "item"
+					item: "shineals_prehistoric_expansion:opabinia_skeleton"
+				}
+				{
+					id: "0000000000000074"
+					type: "item"
+					item: "shineals_prehistoric_expansion:dimorphodon_skeleton"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000075"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000076"
+					type: "xp"
+					xp: 500
+				}
+			]
+		}
+	]
+}

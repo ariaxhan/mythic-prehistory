@@ -1,0 +1,217 @@
+{
+	id: "1EA7C0FFEE000100"
+	group: ""
+	order_index: 10
+	filename: "controls_and_mods"
+	title: "Controls and Mods"
+	icon: "minecraft:writable_book"
+	default_quest_shape: "square"
+	default_hide_dependency_lines: true
+	images: []
+	quests: [
+		{
+			title: "Your Keys"
+			x: 0.0d
+			y: 0.0d
+			subtitle: "The whole keyboard, one page"
+			description: [
+				"This pack ships \u00a7c175 keybinds\u00a7r from two dozen mods, and by default \u00a7c23 keys had more than one thing on them\u00a7r. That is why the backpack key \"did not work\": four mods were fighting over \u00a7eB\u00a7r."
+				""
+				"Those collisions are now fixed. Here is what everything does."
+				""
+				"\u00a76INVENTORY AND STORAGE\u00a7r"
+				"\u00a7eB\u00a7r Open your backpack"
+				"\u00a7eC\u00a7r Backpack inventory interaction"
+				"\u00a7eG\u00a7r Curios screen (your backpack is worn in the \u00a7bback\u00a7r slot)"
+				"\u00a7eO\u00a7r Tom's Storage terminal"
+				"\u00a7eMiddle click\u00a7r Sort any container"
+				"\u00a7e[\u00a7r / \u00a7e]\u00a7r Move items to storage / to you"
+				"\u00a7eAlt+Z\u00a7r, \u00a7eAlt+X\u00a7r Toggle backpack upgrades"
+				""
+				"\u00a76MAP AND TRAVEL\u00a7r"
+				"\u00a7eM\u00a7r World map"
+				"\u00a7eI\u00a7r New waypoint here"
+				"\u00a7eU\u00a7r Waypoint list"
+				"\u00a7e=\u00a7r Zoom minimap in"
+				"\u00a7e.\u00a7r Enlarge minimap"
+				"\u00a7eF7\u00a7r Show/hide waypoints"
+				""
+				"\u00a76INFORMATION\u00a7r"
+				"\u00a7e\\\u00a7r This quest book"
+				"\u00a7eL\u00a7r Advancements (the real taming manual, see below)"
+				"\u00a7eF6\u00a7r FTB Teams"
+				"\u00a7eK\u00a7r Keybind Atlas, a visual map of your keyboard"
+				"\u00a7eKeypad 0-5\u00a7r Jade options"
+				""
+				"\u00a76TOOLS AND COMBAT\u00a7r"
+				"\u00a7eR\u00a7r \u00a7ohold\u00a7r to vein mine (Ore Excavation)"
+				"\u00a7eV\u00a7r Change vein mine shape"
+				"\u00a7eZ\u00a7r Dodge roll"
+				"\u00a7eX\u00a7r Tiny Dragons menu"
+				"\u00a7e'\u00a7r Lost Trinkets"
+				"\u00a7e,\u00a7r Your death history"
+				"\u00a7e;\u00a7r Cycle tooltip tabs"
+			]
+			id: "1EA7C0FFEE000101"
+			shape: "gear"
+			size: 2.0d
+			tasks: [{
+				id: "1EA7C0FFEE000102"
+				type: "checkmark"
+				title: "Read the controls"
+			}]
+			rewards: []
+		}
+		{
+			title: "How To Actually Tame Things"
+			x: 3.0d
+			y: -1.5d
+			subtitle: "Press L. Seriously."
+			description: [
+				"There is no wiki you need. \u00a7bTameable Beasts ships 34 advancements whose descriptions ARE the taming manual.\u00a7r"
+				""
+				"Press \u00a7eL\u00a7r, open the \u00a7bTameable Beasts\u00a7r tab, and read. Entries appear as you unlock their parent, so craft the food first and the creature's entry shows up."
+				""
+				"\u00a76The trick that changes everything\u00a7r"
+				"Most big flyers only accept food when they are \u00a7cunder 10 health\u00a7r, which is miserable on something airborne. So: \u00a7aput the taming food in an arrow and shoot them\u00a7r. That removes the health requirement entirely."
+				""
+				"\u00a76Quick reference\u00a7r"
+				"\u00a7bQuetzalcoatlus / Grapteranodon\u00a7r: Ptera Meal, or Ptera Meal arrow"
+				"\u00a7bArgentavis\u00a7r: Big Bird Bait, or bait arrow"
+				"\u00a7bGround Beetle\u00a7r: feed it Raw Iron"
+				"\u00a7bOther beetles\u00a7r: honey items"
+				"\u00a7bGrasshopper, Roly Poly\u00a7r: salad"
+				"\u00a7bCrested Gecko\u00a7r: arthropod pieces"
+				"\u00a7bHippocampus\u00a7r: any fish, raw or cooked"
+				"\u00a7bMammoth\u00a7r: rides with a Wooly Saddle"
+				""
+				"Eggs hatch on \u00a7bEgg Rests\u00a7r, looted from nests or from eggs you bred."
+				""
+				"\u00a7aEvery eligible prehistoric creature from ShineaL's and Pelagic Prehistory can now bond as a companion.\u00a7r Feed its diet repeatedly: calm little creatures bond around 1-in-2; apex predators take up to 1-in-6."
+				""
+				"Aquatic companions follow and teleport only while you are swimming, so they never beach themselves trying to follow you home. Hover their spawn egg or accepted food in \u00a7bJEI\u00a7r for the exact diet, odds, and habitat rule."
+				""
+				"\u00a76Watch their health\u00a7r"
+				"\u00a7bJade\u00a7r shows a mob's health when you look at it. That is how you know the under-10 window is open."
+			]
+			id: "1EA7C0FFEE000103"
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [{
+				id: "1EA7C0FFEE000104"
+				type: "checkmark"
+				title: "Check the Advancements screen"
+			}]
+			rewards: []
+		}
+		{
+			title: "Backpacks, Storage, Death"
+			x: 3.0d
+			y: 1.5d
+			subtitle: "Where your stuff lives"
+			description: [
+				"\u00a76Sophisticated Backpacks\u00a7r"
+				"Wear it in the \u00a7bCurios back slot\u00a7r (press \u00a7eG\u00a7r) or keep it in your inventory, then press \u00a7eB\u00a7r."
+				""
+				"If \u00a7eB\u00a7r ever does nothing, the bag is not somewhere the key can reach it. Two things always work: take it off and \u00a7aright-click it in your hand\u00a7r, or have a friend right-click it \u00a7aon your back\u00a7r."
+				""
+				"The real power is \u00a7bupgrades\u00a7r, crafted in game and slotted into the bag:"
+				"\u00a7bMagnet\u00a7r pulls in nearby drops"
+				"\u00a7bPickup\u00a7r routes new items straight into the bag"
+				"\u00a7bRestock\u00a7r refills your hotbar from the bag"
+				"\u00a7bDeposit\u00a7r empties into chests on contact"
+				"Look them up in \u00a7eJEI\u00a7r."
+				""
+				"\u00a76When you die\u00a7r"
+				"\u00a7akeepInventory is ON\u00a7r, so you keep everything."
+				"\u00a7b/back\u00a7r returns you to where you died."
+				"\u00a7e,\u00a7r opens your death history."
+				""
+				"\u00a76Loot chests\u00a7r"
+				"\u00a7bLootr\u00a7r gives every player their own copy of a dungeon chest's loot, so you never have to race each other."
+			]
+			id: "1EA7C0FFEE000105"
+			shape: "square"
+			size: 1.5d
+			tasks: [{
+				id: "1EA7C0FFEE000106"
+				type: "checkmark"
+				title: "Understood"
+			}]
+			rewards: []
+		}
+		{
+			title: "Getting Around Safely"
+			x: -3.0d
+			y: -1.5d
+			subtitle: "And the one thing that will freeze the server"
+			description: [
+				"\u00a76Commands\u00a7r (FTB Essentials)"
+				"\u00a7b/sethome\u00a7r then \u00a7b/home\u00a7r to return"
+				"\u00a7b/back\u00a7r to where you died"
+				"\u00a7b/rtp\u00a7r random teleport, far away"
+				"\u00a7b/warp\u00a7r shared named destinations"
+				""
+				"\u00a76Waystones\u00a7r let you link fixed points. \u00a7bXaero's map\u00a7r (\u00a7eM\u00a7r) tracks where you both are."
+				""
+				"\u00a7c\u00a7lRead this part.\u00a7r"
+				"This world sits on \u00a7bTerralith + Tectonic\u00a7r plus a hundred other mods. Land that has never been visited has to be \u00a7ogenerated\u00a7r, and that is genuinely expensive."
+				""
+				"\u00a7aWalking or sailing into new land is fine.\u00a7r Chunks come a few at a time and the server keeps up."
+				""
+				"\u00a7cTeleporting a long way into untouched land is not.\u00a7r It demands hundreds of chunks at once and can freeze the server long enough to disconnect you."
+				""
+				"That includes \u00a7b/rtp\u00a7r, nether portals, and especially the \u00a7dImmersive Gateways\u00a7r, the swirly portals that assemble as you approach. Those fling you up to \u00a7c8096 blocks\u00a7r into raw terrain."
+				""
+				"\u00a77If the server freezes after you use one, that is why. Wait it out or rejoin. Nothing is lost, the world saves constantly.\u00a7r"
+			]
+			id: "1EA7C0FFEE000107"
+			shape: "diamond"
+			size: 1.5d
+			tasks: [{
+				id: "1EA7C0FFEE000108"
+				type: "checkmark"
+				title: "Understood"
+			}]
+			rewards: []
+		}
+		{
+			title: "Quality of Life"
+			x: -3.0d
+			y: 1.5d
+			subtitle: "Things you probably do not know are installed"
+			description: [
+				"\u00a76JEI\u00a7r is the item list on the right. Hover anything:"
+				"\u00a7eR\u00a7r shows how to craft it, \u00a7eU\u00a7r shows what it makes."
+				"Type \u00a7b@modname\u00a7r to see one mod's whole catalog."
+				""
+				"\u00a76Jade\u00a7r names whatever you look at, with its health. Hold \u00a7eShift\u00a7r for more detail."
+				""
+				"\u00a76Ore Excavation\u00a7r: hold \u00a7eR\u00a7r while mining to take a whole vein at once. \u00a7eV\u00a7r changes the shape."
+				""
+				"\u00a76Inventory Sorter\u00a7r: \u00a7emiddle click\u00a7r any chest or your inventory to sort it."
+				""
+				"\u00a76Crafting Tweaks\u00a7r: buttons in every crafting grid. \u00a7eK\u00a7r compresses a stack, \u00a7eTab\u00a7r refills the last recipe."
+				""
+				"\u00a76Comforts\u00a7r: sleeping bags let you skip night without resetting your spawn."
+				""
+				"\u00a76Corpse\u00a7r: your items wait in a grave rather than scattering."
+				""
+				"\u00a76Shulker Box Tooltip\u00a7r: hover a shulker to see inside without placing it."
+				""
+				"\u00a76Controlling\u00a7r adds a \u00a7bsearch bar\u00a7r to Options, Controls, Key Binds, and highlights conflicts in red. Vanilla has no search, which is why finding a keybind here used to be awful."
+				""
+				"\u00a76Better Advancements\u00a7r makes the \u00a7eL\u00a7r screen readable, which matters because it is the taming manual."
+			]
+			id: "1EA7C0FFEE000109"
+			shape: "circle"
+			size: 1.5d
+			tasks: [{
+				id: "1EA7C0FFEE00010A"
+				type: "checkmark"
+				title: "Understood"
+			}]
+			rewards: []
+		}
+	]
+}

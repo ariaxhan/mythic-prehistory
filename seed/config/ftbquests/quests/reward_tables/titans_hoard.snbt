@@ -1,0 +1,97 @@
+{
+	id: "0000000000000003"
+	order_index: 2
+	loot_size: 1
+	title: "Titans Hoard"
+	use_title: true
+	icon: "simplyswords:watcher_claymore"
+	rewards: [
+		{
+			item: "minecraft:netherite_ingot"
+			weight: 15.0f
+		}
+		{
+			item: {
+				id: "aquaculture:neptunium_ingot"
+				Count: 2b
+			}
+			weight: 12.0f
+		}
+		{
+			item: "simplyswords:runic_claymore"
+			weight: 10.0f
+		}
+		{
+			item: "simplyswords:runic_greathammer"
+			weight: 10.0f
+		}
+		{
+			item: "simplyswords:watcher_claymore"
+			weight: 8.0f
+		}
+		{
+			item: "simplyswords:brimstone_claymore"
+			weight: 8.0f
+		}
+		{
+			item: "simplyswords:toxic_longsword"
+			weight: 6.0f
+		}
+		{
+			item: "losttrinkets:ruby_heart"
+			weight: 8.0f
+		}
+		{
+			item: "losttrinkets:minds_eye"
+			weight: 6.0f
+		}
+		{
+			item: "losttrinkets:karma"
+			weight: 6.0f
+		}
+		{
+			item: "species:ichor_bottle"
+			weight: 6.0f
+		}
+		{
+			item: "species:youth_potion"
+			weight: 4.0f
+		}
+		{
+			item: "simplybows:echo_bow"
+			weight: 3.0f
+		}
+		{
+			item: "shineals_prehistoric_expansion:ankh"
+			weight: 2.0f
+		}
+		{
+			item: "recased:weapon_loot_case"
+			weight: 4.0f
+		}
+		{
+			item: "recased:armor_loot_case"
+			weight: 4.0f
+		}
+		{
+			item: "immersive_aircraft:engine"
+			weight: 6.0f
+		}
+		{
+			item: "immersive_aircraft:propeller"
+			weight: 6.0f
+		}
+		{
+			item: "minecraft:totem_of_undying"
+			weight: 5.0f
+		}
+		{
+			item: "minecraft:enchanted_golden_apple"
+			weight: 4.0f
+		}
+		{
+			item: "aquaculture:neptunium_sword"
+			weight: 3.0f
+		}
+	]
+}

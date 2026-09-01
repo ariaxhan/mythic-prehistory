@@ -1,0 +1,30 @@
+{
+	id: "0000000000000008"
+	order_index: 7
+	loot_size: 1
+	title: "Clutch of the Ancients"
+	use_title: true
+	icon: "tameablebeasts:quetzalcoatlus_egg"
+	rewards: [
+		{
+			item: "tameablebeasts:quetzalcoatlus_egg"
+			weight: 1.0f
+		}
+		{
+			item: "tameablebeasts:argentavis_egg"
+			weight: 1.0f
+		}
+		{
+			item: "tameablebeasts:crested_gecko_egg"
+			weight: 1.0f
+		}
+		{
+			item: "tameablebeasts:penguin_egg"
+			weight: 1.0f
+		}
+		{
+			item: "tameablebeasts:beetle_egg"
+			weight: 1.0f
+		}
+	]
+}

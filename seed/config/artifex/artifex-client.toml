@@ -1,0 +1,23 @@
+
+["Artifex Client Settings"]
+	#Render custom creative tab icon?
+	customCreativeIcon = true
+	#Render weapon combo overlay?
+	comboOverlay = true
+	#Change X-offset of the combo overlay (In pixels)
+	comboOverlayXOffset = 0
+	#Change Y-offset of the combo overlay (In pixels)
+	comboOverlayYOffset = 0
+	#Render throwable weapon overlay?
+	throwableOverlay = true
+	#Change X-offset of the throwable weapon overlay (In pixels)
+	throwableOverlayXOffset = 0
+	#Change Y-offset of the throwable weapon overlay (In pixels)
+	throwableOverlayYOffset = 0
+	#Render Iaijutsu overlay?
+	iaijutsuOverlay = true
+	#Change X-offset of the Iaijutsu overlay (In pixels)
+	iaijutsuOverlayXOffset = 0
+	#Change Y-offset of the Iaijutsu overlay (In pixels)
+	iaijutsuOverlayYOffset = 0
+

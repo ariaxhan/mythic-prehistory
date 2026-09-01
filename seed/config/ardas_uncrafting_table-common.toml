@@ -1,0 +1,8 @@
+#Bu listedeki item'lar Uncrafting Table'a GIRDI (input) olarak konulamaz.
+#Format: "modid:item_path" (orn: "minecraft:shulker_box")
+inputBlacklist = []
+#Bu listedeki item'lar herhangi bir tarifin ciktisi (ingredient) olarak
+#uretilirse sessizce cikartilir. Tarifin kendisi iptal edilmez.
+#Format: "modid:item_path" (orn: "minecraft:black_dye")
+outputBlacklist = []
+

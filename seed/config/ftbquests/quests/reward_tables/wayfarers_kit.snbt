@@ -1,0 +1,34 @@
+{
+	id: "0000000000000009"
+	order_index: 8
+	loot_size: 1
+	title: "Wayfarers Kit"
+	use_title: true
+	icon: "waystones:warp_stone"
+	rewards: [
+		{
+			item: "waystones:warp_stone"
+			weight: 1.0f
+		}
+		{
+			item: "explorerscompass:explorerscompass"
+			weight: 1.0f
+		}
+		{
+			item: "naturescompass:naturescompass"
+			weight: 1.0f
+		}
+		{
+			item: "minecraft:saddle"
+			weight: 1.0f
+		}
+		{
+			item: "minecraft:spyglass"
+			weight: 1.0f
+		}
+		{
+			item: "immersive_aircraft:sail"
+			weight: 1.0f
+		}
+	]
+}

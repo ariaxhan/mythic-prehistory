@@ -1,0 +1,30 @@
+{
+	id: "0000000000000004"
+	order_index: 3
+	loot_size: 1
+	title: "Starter Kit"
+	use_title: true
+	icon: "minecraft:chest"
+	rewards: [
+		{
+			item: "sophisticatedbackpacks:backpack"
+			weight: 1.0f
+		}
+		{
+			item: "waystones:warp_stone"
+			weight: 1.0f
+		}
+		{
+			item: "simplyswords:iron_spear"
+			weight: 1.0f
+		}
+		{
+			item: "aquaculture:iron_fishing_rod"
+			weight: 1.0f
+		}
+		{
+			item: "minecraft:iron_pickaxe"
+			weight: 1.0f
+		}
+	]
+}

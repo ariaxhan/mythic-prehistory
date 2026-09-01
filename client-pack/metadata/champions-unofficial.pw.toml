@@ -1,0 +1,10 @@
+name = "Champions Unofficial"
+filename = "champions-forge-1.20.1-2.1.12.7.jar"
+side = "both"
+[download]
+hash-format = "sha1"
+hash = "f489a6d5d993a26f11973d7ef36ef45fe80744fc"
+mode = "metadata:curseforge"
+[update.curseforge]
+project-id = 1074990
+file-id = 8005960

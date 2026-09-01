@@ -1,0 +1,6 @@
+
+#Client-side visual settings. These are personal to each player and are NOT synced.
+[Visuals]
+	#If true, the Rarity and Type of items will be displayed in their hover tooltip.
+	showRarityInTooltip = false
+

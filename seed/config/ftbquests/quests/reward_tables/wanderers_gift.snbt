@@ -1,0 +1,69 @@
+{
+	id: "000000000000000A"
+	order_index: 9
+	loot_size: 1
+	title: "Wanderers Gift"
+	use_title: true
+	icon: "minecraft:cake"
+	rewards: [
+		{
+			item: "minecraft:music_disc_wait"
+			weight: 5.0f
+		}
+		{
+			item: "minecraft:cake"
+			weight: 8.0f
+		}
+		{
+			item: {
+				id: "shineals_prehistoric_expansion:cooked_dodo_egg"
+				Count: 4b
+			}
+			weight: 10.0f
+		}
+		{
+			item: {
+				id: "kaleidoscope_cookery:golden_salad"
+				Count: 2b
+			}
+			weight: 8.0f
+		}
+		{
+			item: "minecraft:poppy"
+			weight: 6.0f
+		}
+		{
+			item: {
+				id: "minecraft:slime_ball"
+				Count: 2b
+			}
+			weight: 8.0f
+		}
+		{
+			item: "minecraft:name_tag"
+			weight: 6.0f
+		}
+		{
+			item: "recased:potion_loot_case"
+			weight: 6.0f
+		}
+		{
+			item: {
+				id: "minecraft:golden_carrot"
+				Count: 6b
+			}
+			weight: 8.0f
+		}
+		{
+			item: "losttrinkets:lunch_bag"
+			weight: 3.0f
+		}
+		{
+			item: {
+				id: "minecraft:firework_rocket"
+				Count: 12b
+			}
+			weight: 6.0f
+		}
+	]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "mythic-prehistory-pack-host",
+  "main": "worker.js",
+  "compatibility_date": "2026-08-31",
+  "routes": [
+    {
+      "pattern": "mythic-pack.ariaxhan.com",
+      "custom_domain": true
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "PACK",
+      "bucket_name": "mythic-prehistory-pack"
+    }
+  ]
+}

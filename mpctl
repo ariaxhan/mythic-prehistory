@@ -1,0 +1,533 @@
+#!/usr/bin/env bash
+# mpctl -- day-to-day control for the Mythic Prehistory server.
+#
+# This is the only tool needed for normal use. It never requires SSHing into the
+# machine and never prints a secret.
+#
+#   ./mpctl start        start the machine and wait until Minecraft reports READY
+#   ./mpctl status       machine + server + players + memory + last backup
+#   ./mpctl doctor       occupancy mode + recent incident signals (read-only)
+#   ./mpctl snapshot     secret-free Markdown incident receipt (read-only)
+#   ./mpctl stop         graceful stop (saves, backs up, then stops the machine)
+#   ./mpctl restart      graceful stop followed by a start
+#   ./mpctl logs [-f]    recent server console output
+#   ./mpctl backup       take a manual verified backup right now
+#   ./mpctl backups      list local and off-site restore points
+#   ./mpctl verify [f]   verify a backup archive's integrity
+#   ./mpctl restore <f>  restore a backup (guarded, backs up current world first)
+#   ./mpctl whitelist    list / add / remove whitelisted players
+#   ./mpctl console <cmd> run one server command over RCON
+#   ./mpctl console --live-safe <reason> <cmd>  bounded relief while players are on
+#
+# Secrets are read from the macOS keychain, never from the repo.
+
+set -euo pipefail
+
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "${REPO_DIR}"
+
+APP="$(sed -n 's/^app *= *"\(.*\)"/\1/p' fly.toml | head -1)"
+[[ -n "${APP}" ]] || { echo "could not read app name from fly.toml" >&2; exit 1; }
+
+KEYCHAIN_STATUS_TOKEN="mythic-prehistory-status-token"
+
+c_red=$'\033[31m'; c_grn=$'\033[32m'; c_ylw=$'\033[33m'; c_dim=$'\033[2m'; c_off=$'\033[0m'
+say()  { printf '%s\n' "$*"; }
+ok()   { printf '%s%s%s\n' "${c_grn}" "$*" "${c_off}"; }
+warn() { printf '%s%s%s\n' "${c_ylw}" "$*" "${c_off}"; }
+err()  { printf '%s%s%s\n' "${c_red}" "$*" "${c_off}" >&2; }
+dim()  { printf '%s%s%s\n' "${c_dim}" "$*" "${c_off}"; }
+
+need() { command -v "$1" >/dev/null 2>&1 || { err "required tool not found: $1"; exit 1; }; }
+need flyctl
+need jq
+
+# --- helpers -----------------------------------------------------------------
+
+status_token() {
+  security find-generic-password -s "${KEYCHAIN_STATUS_TOKEN}" -w 2>/dev/null || true
+}
+
+machine_id() {
+  flyctl machines list --app "${APP}" --json 2>/dev/null \
+    | jq -r '.[0].id // empty'
+}
+
+machine_state() {
+  local machines
+  if ! machines="$(flyctl machines list --app "${APP}" --json 2>/dev/null)"; then
+    printf 'unknown\n'
+    return 0
+  fi
+  jq -r '.[0].state // "absent"' <<<"${machines}" 2>/dev/null || printf 'unknown\n'
+}
+
+status_host() { printf '%s.fly.dev' "${APP}"; }
+
+# Fetch /status. Returns non-zero if unreachable or unauthorised.
+fetch_status() {
+  local token; token="$(status_token)"
+  [[ -n "${token}" ]] || return 3
+  authenticated_get "${token}" "https://$(status_host)/status" 15
+}
+
+# Feed the secret header through curl's stdin config. The token never appears
+# in process argv, logs, or a temporary file.
+authenticated_get() {
+  local token="$1" url="$2" timeout="$3"
+  printf 'header = "Authorization: Bearer %s"\n' "${token}" \
+    | curl -fsS --max-time "${timeout}" --config - "${url}" 2>/dev/null
+}
+
+require_machine() {
+  local id; id="$(machine_id)"
+  if [[ -z "${id}" ]]; then
+    err "no machine found for app ${APP}. Has it been deployed? Try: ./scripts/deploy.sh"
+    exit 1
+  fi
+  printf '%s' "${id}"
+}
+
+# --- commands ----------------------------------------------------------------
+
+cmd_start() {
+  local id; id="$(require_machine)"
+  local state; state="$(machine_state)"
+
+  if [[ "${state}" == "started" ]]; then
+    say "machine already running; waiting for Minecraft to report ready"
+  elif [[ "${state}" != "stopped" && "${state}" != "absent" ]]; then
+    err "refusing start: Fly machine state is ${state}"
+    return 1
+  else
+    say "starting machine ${id} (${state} -> started)"
+    flyctl machines start "${id}" --app "${APP}" >/dev/null
+    ok "machine started"
+  fi
+
+  say ""
+  say "Waiting for the server to finish loading. A 185-mod Forge pack"
+  dim "genuinely takes a few minutes; this is not a hang."
+  say ""
+
+  local waited=0 timeout="${START_TIMEOUT:-900}" body ready proc
+  while [[ "${waited}" -lt "${timeout}" ]]; do
+    if body="$(fetch_status)"; then
+      ready="$(jq -r '.minecraft.ready' <<<"${body}" 2>/dev/null || echo false)"
+      proc="$(jq -r '.minecraft.process_state' <<<"${body}" 2>/dev/null || echo '?')"
+      if [[ "${ready}" == "true" ]]; then
+        say ""
+        ok "READY -- the server is accepting connections."
+        say ""
+        cmd_status
+        return 0
+      fi
+      printf '\r  %s  server state: %-10s (%ss elapsed)' "$(spinner)" "${proc}" "${waited}"
+    else
+      printf '\r  %s  waiting for the status endpoint (%ss elapsed)' "$(spinner)" "${waited}"
+    fi
+    sleep 5
+    waited=$((waited + 5))
+  done
+  say ""
+  err "timed out after ${timeout}s without a ready signal"
+  warn "check logs with: ./mpctl logs"
+  return 1
+}
+
+_spin_i=0
+spinner() {
+  local frames='|/-\'
+  _spin_i=$(( (_spin_i + 1) % 4 ))
+  printf '%s' "${frames:${_spin_i}:1}"
+}
+
+# Machine-readable status for the Dock launcher and the Hearth module, so
+# neither has to screen-scrape the human output.
+cmd_status_json() {
+  local state body
+  state="$(machine_state)"
+  if [[ "${state}" == "started" ]] && body="$(fetch_status)"; then
+    jq -n --arg ms "${state}" --argjson s "${body}" '{
+      machine_state: $ms,
+      ready:         ($s.minecraft.ready // false),
+      process_state: ($s.minecraft.process_state // "unknown"),
+      players:       ($s.players.count),
+      max_players:   ($s.players.max // 4),
+      names:         ($s.players.names // []),
+      last_backup:   ($s.backups.last_backup_utc // null),
+      host:          "aria-mythic-prehistory.fly.dev"
+    }'
+  else
+    jq -n --arg ms "${state}" '{
+      machine_state: $ms,
+      ready:         false,
+      process_state: (if $ms == "started" then "starting" elif ($ms == "stopped" or $ms == "absent") then "stopped" else "unknown" end),
+      players:       null,
+      max_players:   4,
+      names:         [],
+      last_backup:   null,
+      host:          "aria-mythic-prehistory.fly.dev"
+    }'
+  fi
+}
+
+cmd_status() {
+  if [[ "${1:-}" == "--json" ]]; then cmd_status_json; return $?; fi
+  local state; state="$(machine_state)"
+  local id;    id="$(machine_id)"
+
+  say "app        : ${APP}"
+  say "machine    : ${id:-none} (${state})"
+
+  if [[ "${state}" == "stopped" || "${state}" == "absent" ]]; then
+    warn "server     : STOPPED"
+    dim "start it with: ./mpctl start"
+    return 0
+  elif [[ "${state}" != "started" ]]; then
+    err "server     : UNKNOWN (could not prove Fly machine state)"
+    return 1
+  fi
+
+  local body fetch_rc=0
+  body="$(fetch_status)" || fetch_rc=$?
+  if [[ "${fetch_rc}" -ne 0 ]]; then
+    case "${fetch_rc}" in
+      3) warn "status     : token not in keychain; run scripts/deploy.sh to provision it" ;;
+      *) warn "status     : endpoint unreachable (server may still be booting)" ;;
+    esac
+    return 0
+  fi
+
+  local ready proc players names heap rss memused cpu lastbk reason crash
+  ready="$(jq -r '.minecraft.ready'          <<<"${body}")"
+  proc="$(jq  -r '.minecraft.process_state'  <<<"${body}")"
+  players="$(jq -r '.players.count // "unknown"' <<<"${body}")"
+  names="$(jq -r '.players.names | join(", ")'   <<<"${body}")"
+  heap="$(jq  -r '.minecraft.heap'           <<<"${body}")"
+  rss="$(jq   -r '.minecraft.jvm_rss_bytes // 0' <<<"${body}")"
+  memused="$(jq -r '.resources.memory.used_percent // "?"' <<<"${body}")"
+  cpu="$(jq   -r '.resources.cpu_percent // "?"' <<<"${body}")"
+  lastbk="$(jq -r '.backups.last_backup_utc // "never"' <<<"${body}")"
+  reason="$(jq -r '.last_shutdown_reason // "n/a"' <<<"${body}")"
+  crash="$(jq -r '.crash.restarts_this_run' <<<"${body}")"
+
+  if [[ "${ready}" == "true" ]]; then
+    ok  "server     : READY"
+  else
+    warn "server     : ${proc} (not yet accepting connections)"
+  fi
+  say "players    : ${players}/$(jq -r '.players.max' <<<"${body}")${names:+  (${names})}"
+  say "heap       : ${heap}   jvm rss: $(numfmt --to=iec "${rss}" 2>/dev/null || echo "${rss}")"
+  say "machine    : cpu ${cpu}%   memory ${memused}% used"
+  say "last backup: ${lastbk}"
+  say "backups    : $(jq -r '.backups.local_count' <<<"${body}") local, off-site $(jq -r 'if .backups.offsite_configured then "configured" else "NOT configured" end' <<<"${body}")"
+  say "last stop  : ${reason}"
+  [[ "${crash}" != "0" ]] && warn "crash restarts this run: ${crash}"
+  local cr
+  cr="$(jq -r '.crash.latest_report.file // empty' <<<"${body}")"
+  [[ -n "${cr}" ]] && warn "latest crash report: ${cr}  (./mpctl logs)"
+  return 0
+}
+
+cmd_stop() {
+  local id; id="$(require_machine)"
+  local state; state="$(machine_state)"
+  if [[ "${state}" == "stopped" || "${state}" == "absent" ]]; then
+    say "machine is already stopped"
+    return 0
+  elif [[ "${state}" != "started" ]]; then
+    err "refusing stop: Fly machine state is ${state}"
+    return 1
+  fi
+
+  require_mode "stop" MAINTENANCE
+
+  say "stopping gracefully (save, backup, then machine stop)..."
+  # `machines stop` sends the configured kill_signal, which our entrypoint traps
+  # and turns into the full graceful sequence.
+  flyctl machines stop "${id}" --app "${APP}" >/dev/null
+  ok "stop signalled; the machine saves and backs up before halting"
+  dim "watch it finish with: ./mpctl logs"
+}
+
+cmd_restart() {
+  cmd_stop "${@:-}"
+  say "waiting for the machine to settle..."
+  local waited=0
+  while [[ "$(machine_state)" == "started" && "${waited}" -lt 300 ]]; do
+    sleep 5; waited=$((waited + 5))
+  done
+  cmd_start
+}
+
+cmd_logs() {
+  if [[ "${1:-}" == "-f" ]]; then
+    flyctl logs --app "${APP}"
+    return
+  fi
+  local token; token="$(status_token)"
+  if [[ -n "${token}" && "$(machine_state)" == "started" ]]; then
+    authenticated_get "${token}" "https://$(status_host)/logs?lines=${1:-200}" 20 && return 0
+  fi
+  # Falls back to the platform log stream, which also works while stopped.
+  flyctl logs --app "${APP}" --no-tail 2>/dev/null | tail -n "${1:-200}"
+}
+
+cmd_console() {
+  [[ $# -gt 0 ]] || { err "usage: ./mpctl console <server command>"; exit 1; }
+  local id; id="$(require_machine)"
+  [[ "$(machine_state)" == "started" ]] || { err "machine is not running"; exit 1; }
+  local mode command safe=false live_safe=false reason=""
+  if [[ "${1:-}" == "--live-safe" ]]; then
+    [[ $# -ge 3 ]] || { err "usage: ./mpctl console --live-safe <reason> <server command>"; exit 1; }
+    live_safe=true
+    reason="$2"
+    [[ -n "${reason}" && "${reason}" != *$'\n'* ]] || { err "live-safe reason must be one non-empty line"; exit 1; }
+    shift 2
+  fi
+  mode="$(occupancy_mode)"
+  command="$*"
+  if [[ "${mode}" == "PLAYING" ]]; then
+    [[ "${command}" =~ ^list$ ]] && safe=true
+    [[ "${command}" =~ ^forge[[:space:]]+tps$ ]] && safe=true
+    [[ "${command}" =~ ^spark[[:space:]]+health$ ]] && safe=true
+    [[ "${command}" =~ ^time[[:space:]]+query[[:space:]]+(daytime|gametime|day)$ ]] && safe=true
+    [[ "${command}" =~ ^gamerule[[:space:]]+[A-Za-z0-9_]+$ ]] && safe=true
+    [[ "${command}" =~ ^data[[:space:]]+get[[:space:]] ]] && safe=true
+    if [[ "${live_safe}" == "true" ]]; then
+      # Deliberately tiny reversible relief surface. No teleport, terrain,
+      # gamerule, summon, kill, or arbitrary command execution while playing.
+      [[ "${command}" =~ ^effect[[:space:]]+give[[:space:]]+[A-Za-z0-9_]+[[:space:]]+[a-z0-9_.-]+:[a-z0-9_./-]+([[:space:]][0-9]+([[:space:]][0-9]+([[:space:]]+(true|false))?)?)?$ ]] && safe=true
+      [[ "${command}" =~ ^effect[[:space:]]+clear[[:space:]]+[A-Za-z0-9_]+[[:space:]]+[a-z0-9_.-]+:[a-z0-9_./-]+$ ]] && safe=true
+      [[ "${command}" =~ ^give[[:space:]]+[A-Za-z0-9_]+[[:space:]]+[a-z0-9_.-]+:[a-z0-9_./-]+([[:space:]]([1-9]|[1-5][0-9]|6[0-4]))?$ ]] && safe=true
+    fi
+    [[ "${safe}" == "true" ]] || {
+      err "refusing RCON mutation while players are connected; mode=${mode}"
+      return 1
+    }
+    [[ "${live_safe}" == "true" ]] && warn "live-safe RCON: ${reason}"
+  elif [[ "${mode}" != "MAINTENANCE" ]]; then
+    err "refusing RCON command while occupancy is ${mode}"
+    return 1
+  fi
+  remote_rcon "${id}" "${command}"
+}
+
+remote_rcon() {
+  local id="$1" command="$2" encoded
+  encoded="$(printf '%s' "${command}" | base64 | tr -d '\n')"
+  # The encoded payload is inert at the remote shell boundary.
+  flyctl ssh console --app "${APP}" --machine "${id}" \
+    -C "/bin/bash -lc 'source /opt/mp/lib.sh; rcon \"\$(printf %s ${encoded} | base64 -d)\"'"
+}
+
+read_recent_logs() {
+  local lines="${1:-400}" token
+  token="$(status_token)"
+  if [[ -n "${token}" && "$(machine_state)" == "started" ]]; then
+    authenticated_get "${token}" "https://$(status_host)/logs?lines=${lines}" 20 && return 0
+  fi
+  flyctl logs --app "${APP}" --no-tail 2>/dev/null | tail -n "${lines}"
+}
+
+doctor_payload() {
+  local status state ready players mode logs signals
+  status="$(cmd_status_json)"
+  state="$(jq -r '.machine_state' <<<"${status}")"
+  ready="$(jq -r '.ready' <<<"${status}")"
+  players="$(jq -r '.players // "unknown"' <<<"${status}")"
+
+  if [[ "${state}" == "stopped" || "${state}" == "absent" ]]; then
+    mode="OFFLINE"
+  elif [[ "${state}" != "started" ]]; then
+    mode="UNKNOWN"
+  elif [[ "${players}" == "unknown" ]]; then
+    mode="UNKNOWN"
+  elif [[ "${players}" -gt 0 ]]; then
+    mode="PLAYING"
+  elif [[ "${ready}" == "true" ]]; then
+    mode="MAINTENANCE"
+  else
+    mode="UNKNOWN"
+  fi
+
+  logs="$(read_recent_logs 400 || true)"
+  signals="$(python3 scripts/analyze_logs.py <<<"${logs}")"
+  jq -n --arg mode "${mode}" --argjson status "${status}" \
+    --argjson signals "${signals}" '{mode:$mode,status:$status,signals:$signals}'
+}
+
+occupancy_mode() {
+  local status state ready players
+  status="$(cmd_status_json)"
+  state="$(jq -r '.machine_state' <<<"${status}")"
+  ready="$(jq -r '.ready' <<<"${status}")"
+  players="$(jq -r '.players // "unknown"' <<<"${status}")"
+  if [[ "${state}" == "stopped" || "${state}" == "absent" ]]; then
+    printf 'OFFLINE\n'
+  elif [[ "${state}" != "started" || "${players}" == "unknown" ]]; then
+    printf 'UNKNOWN\n'
+  elif [[ "${players}" -gt 0 ]]; then
+    printf 'PLAYING\n'
+  elif [[ "${ready}" == "true" ]]; then
+    printf 'MAINTENANCE\n'
+  else
+    printf 'UNKNOWN\n'
+  fi
+}
+
+require_mode() {
+  local operation="$1" allowed="$2" actual
+  actual="$(occupancy_mode)"
+  [[ "${actual}" == "${allowed}" ]] || {
+    err "refusing ${operation}: requires ${allowed}, current mode is ${actual}"
+    return 1
+  }
+}
+
+cmd_doctor() {
+  local payload mode
+  payload="$(doctor_payload)"
+  if [[ "${1:-}" == "--json" ]]; then
+    jq . <<<"${payload}"
+    return
+  fi
+  mode="$(jq -r '.mode' <<<"${payload}")"
+  say "mode       : ${mode}"
+  case "${mode}" in
+    PLAYING) warn "ceiling    : read-only, bounded reversible RCON, proven hot reload" ;;
+    MAINTENANCE) ok "ceiling    : empty-server maintenance; deploy/restart guards still apply" ;;
+    OFFLINE) ok "ceiling    : repo/client work; compute is stopped" ;;
+    UNKNOWN) err "ceiling    : read-only only; player occupancy is not proven" ;;
+  esac
+  say "machine    : $(jq -r '.status.machine_state' <<<"${payload}")"
+  say "ready      : $(jq -r '.status.ready' <<<"${payload}")"
+  say "players    : $(jq -r 'if .status.players == null then "unknown" else (.status.players|tostring) end' <<<"${payload}")"
+  say "log window : $(jq -r '.signals.lines_scanned' <<<"${payload}") lines"
+  say "signals    : $(jq -r '.signals.counts | to_entries | map("\(.key)=\(.value)") | join("  ")' <<<"${payload}")"
+}
+
+cmd_snapshot() {
+  local payload
+  payload="$(doctor_payload)"
+  say "# Mythic operations snapshot"
+  say ""
+  say "- captured_utc: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  say "- git_commit: $(git rev-parse --short HEAD)"
+  say "- git_branch: $(git branch --show-current)"
+  say "- git_dirty_paths: $(git status --short -- . | wc -l | tr -d ' ')"
+  say "- mode: $(jq -r '.mode' <<<"${payload}")"
+  say "- machine_state: $(jq -r '.status.machine_state' <<<"${payload}")"
+  say "- ready: $(jq -r '.status.ready' <<<"${payload}")"
+  say "- players: $(jq -r 'if .status.players == null then "unknown" else (.status.players|tostring) end' <<<"${payload}")"
+  say "- log_lines_scanned: $(jq -r '.signals.lines_scanned' <<<"${payload}")"
+  say "- log_signals: $(jq -c '.signals.counts' <<<"${payload}")"
+}
+
+cmd_pregen() {
+  local id; id="$(require_machine)"
+  [[ "$(machine_state)" == "started" ]] || { err "start the server first: ./mpctl start"; exit 1; }
+  local radius="${1:-32}"
+  local x="${2:-0}" z="${3:-0}"
+  [[ "${radius}" =~ ^[0-9]+$ && "${radius}" -gt 0 && "${radius}" -le 10000 ]] || { err "radius must be an integer from 1 to 10000"; exit 1; }
+  [[ "${x}" =~ ^-?[0-9]+$ && "${z}" =~ ^-?[0-9]+$ ]] || { err "coordinates must be integers"; exit 1; }
+  require_mode "pregen" MAINTENANCE
+  say "pre-generating a ${radius}-chunk radius ($(( radius * 16 )) blocks) around spawn."
+  dim "idle shutdown is paused while this runs. Nobody should be connected."
+  say ""
+  flyctl ssh console --app "${APP}" --machine "${id}" \
+    -C "/opt/mp/pregen.sh ${radius} ${x} ${z}"
+}
+
+cmd_backup() {
+  local id; id="$(require_machine)"
+  [[ "$(machine_state)" == "started" ]] || { err "machine must be running to take a backup"; exit 1; }
+  require_mode "backup" MAINTENANCE
+  say "taking a verified backup..."
+  flyctl ssh console --app "${APP}" --machine "${id}" \
+    -C "/opt/mp/backup.sh manual"
+}
+
+cmd_backups() {
+  local id; id="$(require_machine)"
+  if [[ "$(machine_state)" != "started" ]]; then
+    err "machine must be running to list backups (they live on the volume)"
+    dim "start it with: ./mpctl start"
+    exit 1
+  fi
+  say "=== local (on the Fly volume) ==="
+  flyctl ssh console --app "${APP}" --machine "${id}" \
+    -C "/bin/bash -lc 'ls -lht /data/backups/*.tar.zst 2>/dev/null || echo none'"
+  say ""
+  say "=== off-site (Cloudflare R2) ==="
+  flyctl ssh console --app "${APP}" --machine "${id}" \
+    -C "/bin/bash -lc 'python3 /opt/mp/r2.py list 2>&1 || true'"
+}
+
+cmd_verify() {
+  local id; id="$(require_machine)"
+  local archive="${1:-latest}"
+  [[ "${archive}" =~ ^[A-Za-z0-9._-]+$ ]] || { err "invalid archive name"; exit 1; }
+  flyctl ssh console --app "${APP}" --machine "${id}" -C "/opt/mp/verify_backup.sh ${archive}"
+}
+
+cmd_restore() {
+  [[ $# -gt 0 ]] || { err "usage: ./mpctl restore <archive-name|latest>"; exit 1; }
+  local id; id="$(require_machine)"
+  local archive="$1"
+  [[ "${archive}" =~ ^[A-Za-z0-9._-]+$ ]] || { err "invalid archive name"; exit 1; }
+  require_mode "restore" MAINTENANCE
+  warn "Restore replaces the live world."
+  warn "The current world will be backed up first, and the server must be stopped."
+  read -r -p "Type the archive name again to confirm: " confirm
+  [[ "${confirm}" == "${archive}" ]] || { err "confirmation did not match; aborted"; exit 1; }
+  flyctl ssh console --app "${APP}" --machine "${id}" \
+    -C "/opt/mp/restore.sh ${archive} --confirm"
+}
+
+cmd_whitelist() {
+  local id; id="$(require_machine)"
+  [[ "$(machine_state)" == "started" ]] || { err "machine must be running"; exit 1; }
+  local action="${1:-list}"; shift || true
+  case "${action}" in
+    list)   remote_rcon "${id}" "whitelist list" ;;
+    add)    [[ $# -gt 0 ]] || { err "usage: ./mpctl whitelist add <player>"; exit 1; }
+            [[ "$1" =~ ^[A-Za-z0-9_]{1,16}$ ]] || { err "invalid Minecraft player name"; exit 1; }
+            require_mode "whitelist add" MAINTENANCE
+            remote_rcon "${id}" "whitelist add $1"; remote_rcon "${id}" "whitelist reload" ;;
+    remove) [[ $# -gt 0 ]] || { err "usage: ./mpctl whitelist remove <player>"; exit 1; }
+            [[ "$1" =~ ^[A-Za-z0-9_]{1,16}$ ]] || { err "invalid Minecraft player name"; exit 1; }
+            require_mode "whitelist remove" MAINTENANCE
+            remote_rcon "${id}" "whitelist remove $1"; remote_rcon "${id}" "whitelist reload" ;;
+    *) err "unknown whitelist action: ${action} (list|add|remove)"; exit 1 ;;
+  esac
+}
+
+usage() {
+  sed -n '2,26p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
+}
+
+main() {
+  local cmd="${1:-status}"; shift || true
+  case "${cmd}" in
+    start)     cmd_start "$@" ;;
+    stop)      cmd_stop "$@" ;;
+    restart)   cmd_restart "$@" ;;
+    status)    cmd_status "$@" ;;
+    doctor)    cmd_doctor "$@" ;;
+    snapshot)  cmd_snapshot "$@" ;;
+    logs)      cmd_logs "$@" ;;
+    console)   cmd_console "$@" ;;
+    pregen)    cmd_pregen "$@" ;;
+    backup)    cmd_backup "$@" ;;
+    backups)   cmd_backups "$@" ;;
+    verify)    cmd_verify "$@" ;;
+    restore)   cmd_restore "$@" ;;
+    whitelist) cmd_whitelist "$@" ;;
+    help|-h|--help) usage ;;
+    *) err "unknown command: ${cmd}"; usage; exit 1 ;;
+  esac
+}
+
+main "$@"

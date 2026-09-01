@@ -1,0 +1,296 @@
+{
+	id: "0000000000000227"
+	group: ""
+	order_index: 7
+	filename: "the_long_game"
+	title: "The Long Game"
+	icon: "shineals_prehistoric_expansion:ankh"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	images: []
+	quests: [
+		{
+			title: "The Long Game"
+			x: 0.0d
+			y: 0.0d
+			subtitle: "Finish the other chapters first"
+			description: [
+				"This chapter does not open for tourists."
+				""
+				"It unlocks only when you have finished the other chapters' summits: the apex kill, a runic weapon, a thriving aquarium, the Skylands, and a hall that survived a winter."
+				""
+				"There is no reward for standing at the gate. The rewards are behind it, and every feat in here rolls the \u00a76Titan's Hoard\u00a7r."
+			]
+			id: "0000000000000208"
+			shape: "star"
+			size: 1.5d
+			dependencies: [
+				"0000000000000052"
+				"00000000000000F0"
+				"0000000000000113"
+				"0000000000000196"
+				"000000000000015B"
+			]
+			tasks: [
+				{
+					id: "0000000000000206"
+					type: "checkmark"
+					title: "The gate is open"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000207"
+					type: "xp"
+					xp: 100
+				}
+			]
+		}
+		{
+			title: "Smelt 4 Neptunium Ingots"
+			x: -2.0d
+			y: 1.6d
+			subtitle: "The angler's endgame"
+			description: [
+				"Fish up enough of Neptune's favor to smelt \u00a7bneptunium ingots\u00a7r and forge the sea-god's own gear."
+				""
+				"The Aquatic Age was practice. This is the graduation."
+			]
+			id: "000000000000020C"
+			dependencies: [
+				"0000000000000208"
+			]
+			tasks: [
+				{
+					id: "0000000000000209"
+					type: "item"
+					item: "aquaculture:neptunium_ingot"
+					count: 4L
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000020A"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "000000000000020B"
+					type: "xp"
+					xp: 500
+				}
+			]
+		}
+		{
+			title: "Kill 3 Spinosaurus"
+			x: 2.0d
+			y: 1.6d
+			subtitle: "The apex of apexes"
+			description: [
+				"The \u00a7cspinosaurus\u00a7r is the largest predator this world ever produced, and it knows it."
+				""
+				"End the dynasty: three of them, each on its own riverbank. Bring friends or bring three eulogies."
+			]
+			id: "0000000000000210"
+			shape: "star"
+			dependencies: [
+				"0000000000000208"
+			]
+			tasks: [
+				{
+					id: "000000000000020D"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:spinosaurus"
+					value: 3L
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000020E"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "000000000000020F"
+					type: "xp"
+					xp: 750
+				}
+			]
+		}
+		{
+			title: "The Ankh"
+			x: 0.0d
+			y: 2.4d
+			subtitle: "The signature artifact"
+			description: [
+				"ShineaL's hides one artifact above all: the \u00a76Ankh\u00a7r, and from it the \u00a76Ankh Shield\u00a7r. Old-world protection, hard-won, the pack's signature trophy."
+				""
+				"JEI knows what the ankh demands. Start collecting."
+			]
+			id: "0000000000000215"
+			shape: "star"
+			dependencies: [
+				"0000000000000208"
+			]
+			tasks: [
+				{
+					id: "0000000000000211"
+					type: "item"
+					item: "shineals_prehistoric_expansion:ankh"
+				}
+				{
+					id: "0000000000000212"
+					type: "item"
+					item: "shineals_prehistoric_expansion:ankh_shield"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000213"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000214"
+					type: "xp"
+					xp: 1000
+				}
+			]
+		}
+		{
+			title: "Obtain a Bottle of Ichor"
+			x: -2.0d
+			y: 3.4d
+			subtitle: "Species' strangest prize"
+			description: [
+				"\u00a7dIchor\u00a7r: what runs in divine veins, bottled by whatever Species calls science. The \u00a7dyouth potion\u00a7r is its rumored refinement."
+				""
+				"Obtain a bottle of ichor. Ask no questions you cannot unhear the answers to."
+			]
+			id: "0000000000000219"
+			optional: true
+			dependencies: [
+				"000000000000020C"
+			]
+			tasks: [
+				{
+					id: "0000000000000216"
+					type: "item"
+					item: "species:ichor_bottle"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000217"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000218"
+					type: "xp"
+					xp: 600
+				}
+			]
+		}
+		{
+			title: "The Living Museum"
+			x: 0.0d
+			y: 4.4d
+			subtitle: "Every chapter, one building"
+			description: [
+				"One tamed beast. One pocket dragon. One pterosaur in the aviary. One aquarium of rare fish. One hall of mounted skeletons."
+				""
+				"Build a menagerie that would make a temple jealous. When a visitor could walk it and understand the whole pack, check it off; this one is on your honor, and your honor rolls the Hoard twice."
+			]
+			id: "000000000000021E"
+			shape: "star"
+			dependencies: [
+				"0000000000000210"
+				"0000000000000215"
+			]
+			tasks: [
+				{
+					id: "000000000000021A"
+					type: "checkmark"
+					title: "Complete your menagerie"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000021B"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "000000000000021C"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "000000000000021D"
+					type: "xp"
+					xp: 1000
+				}
+			]
+		}
+		{
+			title: "The Seventy: A Kill Ledger"
+			x: 2.0d
+			y: 3.4d
+			subtitle: "The bards check your math"
+			description: [
+				"Every legend has a body count the bards round up. Yours will not need rounding."
+				""
+				"Forty raptors. Fifteen terror birds. Ten harpies. Five carnotaurus. The wilds keep the tally, and the wilds are not vanilla."
+			]
+			id: "0000000000000226"
+			optional: true
+			dependencies: [
+				"0000000000000208"
+			]
+			tasks: [
+				{
+					id: "000000000000021F"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:utahraptor"
+					value: 40L
+				}
+				{
+					id: "0000000000000220"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:phorusrhacos"
+					value: 15L
+				}
+				{
+					id: "0000000000000221"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:carnotaurus"
+					value: 5L
+				}
+				{
+					id: "0000000000000222"
+					type: "kill"
+					entity: "shineals_prehistoric_expansion:harpy"
+					value: 10L
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000223"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000224"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "0000000000000225"
+					type: "xp"
+					xp: 750
+				}
+			]
+		}
+	]
+}

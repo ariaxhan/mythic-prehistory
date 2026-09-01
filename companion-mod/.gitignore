@@ -1,0 +1,5 @@
+.gradle/
+.gradle-dist/
+build/
+run/
+run-data/

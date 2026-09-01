@@ -1,0 +1,565 @@
+{
+	id: "0000000000000184"
+	group: ""
+	order_index: 5
+	filename: "hearth_and_hall"
+	title: "Hearth and Hall"
+	icon: "sophisticatedstorage:chest"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	images: []
+	quests: [
+		{
+			title: "Craft Any Furniture"
+			x: 0.0d
+			y: 0.0d
+			subtitle: "The decor stack"
+			description: [
+				"A hero's hall should look like one. The pack's decor shelf, and what each mod is for:"
+				""
+				"\u00a7eGuita's Woodworks\u00a7r: carved wooden furniture with character."
+				"\u00a7eImmersive Furniture\u00a7r: chairs and tables you actually sit at and use."
+				"\u00a7eRecased\u00a7r: loot cases hidden in the world (its quest is elsewhere in this chapter)."
+				""
+				"Type \u00a7b@guitas\u00a7r in JEI's search to browse a whole catalog. Craft any furniture piece to begin."
+			]
+			id: "000000000000014B"
+			shape: "square"
+			size: 1.5d
+			tasks: [
+				{
+					id: "0000000000000147"
+					type: "advancement"
+					advancement: "immersive_furniture:misc/furniture_crafter"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000148"
+					type: "item"
+					item: {
+						id: "minecraft:oak_log"
+						Count: 16b
+					}
+				}
+				{
+					id: "0000000000000149"
+					type: "random"
+					table_id: 1L
+				}
+				{
+					id: "000000000000014A"
+					type: "random"
+					table_id: 10L
+				}
+			]
+		}
+		{
+			title: "Upgrade Your Chest"
+			x: -1.5d
+			y: 1.5d
+			subtitle: "Sophisticated Storage"
+			description: [
+				"Sophisticated Storage upgrades chests the way the backpack upgraded your back: bigger, filterable, sortable, linkable."
+				""
+				"Craft one, fill it, then hover it and let Jade show you the contents through the wood."
+			]
+			id: "000000000000014F"
+			dependencies: [
+				"000000000000014B"
+			]
+			tasks: [
+				{
+					id: "000000000000014C"
+					type: "item"
+					item: "sophisticatedstorage:chest"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000014D"
+					type: "item"
+					item: {
+						id: "sophisticatedstorage:packing_tape"
+						Count: 1b
+					}
+				}
+				{
+					id: "000000000000014E"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Build the Uncrafting Table"
+			x: 1.5d
+			y: 1.5d
+			subtitle: "Ctrl+Z for crafting"
+			description: [
+				"Crafted the wrong thing? Arda's \u00a7eUncrafting Table\u00a7r reverses recipes for an XP fee. The god of the forge does refunds."
+				""
+				"Pairs well with the Blocks Previewer, which ghosts a block before you place it."
+			]
+			id: "0000000000000153"
+			dependencies: [
+				"000000000000014B"
+			]
+			tasks: [
+				{
+					id: "0000000000000150"
+					type: "item"
+					item: "ardas_uncrafting_table:uncrafting_table"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000151"
+					type: "item"
+					item: {
+						id: "minecraft:experience_bottle"
+						Count: 4b
+					}
+				}
+				{
+					id: "0000000000000152"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Plant a Crop, Harvest It"
+			x: 0.0d
+			y: 2.5d
+			subtitle: "Seasons + temperature"
+			description: [
+				"Serene Seasons puts the world on a calendar: crops care what month it is. Legendary Survival Overhaul makes temperature real: dress for the climate or suffer in it."
+				""
+				"Get a farm producing: harvest any crop you planted."
+			]
+			id: "0000000000000157"
+			dependencies: [
+				"000000000000014F"
+				"0000000000000153"
+			]
+			tasks: [
+				{
+					id: "0000000000000154"
+					type: "advancement"
+					advancement: "minecraft:husbandry/plant_seed"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000155"
+					type: "item"
+					item: {
+						id: "minecraft:bone_meal"
+						Count: 16b
+					}
+				}
+				{
+					id: "0000000000000156"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Craft the Seasonal Calendar"
+			x: 0.0d
+			y: 4.0d
+			subtitle: "Serene Seasons"
+			description: [
+				"Craft the \u00a7bSeasonal Calendar\u00a7r: proof you respect the turning year, because the year will turn on you. Winter is not a reskin here."
+				""
+				"Stock food. Wear wool. Respect the calendar."
+			]
+			id: "000000000000015B"
+			dependencies: [
+				"0000000000000157"
+			]
+			tasks: [
+				{
+					id: "0000000000000158"
+					type: "advancement"
+					advancement: "legendarysurvivaloverhaul:main/get_a_calendar"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000159"
+					type: "item"
+					item: {
+						id: "minecraft:hay_block"
+						Count: 4b
+					}
+				}
+				{
+					id: "000000000000015A"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Thermometer + Coat = Stop Freezing"
+			x: -1.5d
+			y: 3.2d
+			subtitle: "Legendary Survival Overhaul"
+			description: [
+				"Legendary Survival Overhaul made temperature real. Its own progression: craft a \u00a7bthermometer\u00a7r to see the danger, then a sewing table and \u00a7ba coat\u00a7r to survive it."
+				""
+				"The glacial chasm and the volcanic peaks are waiting for exactly this preparation."
+			]
+			id: "0000000000000160"
+			dependencies: [
+				"0000000000000157"
+			]
+			tasks: [
+				{
+					id: "000000000000015C"
+					type: "advancement"
+					advancement: "legendarysurvivaloverhaul:main/get_a_thermometer"
+					criterion: ""
+				}
+				{
+					id: "000000000000015D"
+					type: "advancement"
+					advancement: "legendarysurvivaloverhaul:main/sew_a_coat"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000015E"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "000000000000015F"
+					type: "xp"
+					xp: 250
+				}
+			]
+		}
+		{
+			title: "Underground Gambling"
+			x: 1.5d
+			y: 3.2d
+			subtitle: "Recased"
+			description: [
+				"Recased buries \u00a7dloot cases\u00a7r in the world: sealed containers of maybe-treasure. The mod's own advancement for cracking one underground says everything about how it expects you to live."
+				""
+				"Find and open one below the surface."
+			]
+			id: "0000000000000163"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"0000000000000153"
+			]
+			tasks: [
+				{
+					id: "0000000000000161"
+					type: "advancement"
+					advancement: "recased:underground_gambling"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000162"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Build the Kitchen: Stove, Pot, Board"
+			x: -3.0d
+			y: 1.5d
+			subtitle: "Kaleidoscope Cookery"
+			description: [
+				"Kaleidoscope Cookery starts at the \u00a7cstove\u00a7r. Pot on top, fuel below, and suddenly you can actually cook."
+				""
+				"Build the stove, the pot, and the chopping board. Your hall now has a heart."
+			]
+			id: "0000000000000169"
+			dependencies: [
+				"000000000000014B"
+			]
+			tasks: [
+				{
+					id: "0000000000000164"
+					type: "item"
+					item: "kaleidoscope_cookery:stove"
+				}
+				{
+					id: "0000000000000165"
+					type: "item"
+					item: "kaleidoscope_cookery:pot"
+				}
+				{
+					id: "0000000000000166"
+					type: "item"
+					item: "kaleidoscope_cookery:chopping_board"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000167"
+					type: "item"
+					item: {
+						id: "minecraft:coal"
+						Count: 16b
+					}
+				}
+				{
+					id: "0000000000000168"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Cook a Real Dish"
+			x: -3.0d
+			y: 3.0d
+			subtitle: "Buffs on a plate"
+			description: [
+				"Now cook something real: spicy chicken, braised pork ribs, dongpo pork. Stargazy pie, if you want dinner to stare back."
+				""
+				"The fancy dishes grant real buffs. Cook any pot dish."
+			]
+			id: "000000000000016D"
+			dependencies: [
+				"0000000000000169"
+			]
+			tasks: [
+				{
+					id: "000000000000016A"
+					type: "advancement"
+					advancement: "kaleidoscope_cookery:stir_fry"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000016B"
+					type: "item"
+					item: {
+						id: "kaleidoscope_cookery:golden_salad"
+						Count: 2b
+					}
+				}
+				{
+					id: "000000000000016C"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Touch the Hot Stove"
+			x: -4.5d
+			y: 2.2d
+			subtitle: "An advancement of shame"
+			description: [
+				"Touch the lit stove with your bare hand and Kaleidoscope Cookery awards you an advancement, because the mod author knew you would."
+				""
+				"Every kitchen has a first lesson."
+			]
+			id: "0000000000000170"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"0000000000000169"
+			]
+			tasks: [
+				{
+					id: "000000000000016E"
+					type: "advancement"
+					advancement: "kaleidoscope_cookery:burn_hand"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000016F"
+					type: "item"
+					item: {
+						id: "kaleidoscope_cookery:golden_salad"
+						Count: 1b
+					}
+				}
+			]
+		}
+		{
+			title: "Buddha Jumps Over the Wall"
+			x: -3.0d
+			y: 4.5d
+			subtitle: "The chef's Everest"
+			description: [
+				"The legendary soup so good it tempts monks over monastery walls. The chef's true endgame: rare ingredients from half the pack's systems."
+				""
+				"Cook it once and you may call yourself a cook in front of the gods."
+			]
+			id: "0000000000000174"
+			shape: "star"
+			dependencies: [
+				"000000000000016D"
+			]
+			tasks: [
+				{
+					id: "0000000000000171"
+					type: "item"
+					item: "kaleidoscope_cookery:buddha_jumps_over_the_wall"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000172"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000173"
+					type: "xp"
+					xp: 500
+				}
+			]
+		}
+		{
+			title: "Craft Straight from Your Chests"
+			x: -1.5d
+			y: 3.0d
+			subtitle: "Tom's Simple Storage"
+			description: [
+				"\u00a7eTom's Simple Storage\u00a7r ends the great inventory shuffle: place a \u00a7bCrafting Terminal\u00a7r against your chest wall (link chests with the wireless adapter or cable) and craft using everything inside all of them at once."
+				""
+				"No power, no machines; just the recipe grid finally seeing your whole storeroom."
+			]
+			id: "0000000000000178"
+			dependencies: [
+				"000000000000014F"
+			]
+			tasks: [
+				{
+					id: "0000000000000175"
+					type: "item"
+					item: "toms_storage:ts.crafting_terminal"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000176"
+					type: "item"
+					item: {
+						id: "minecraft:chest"
+						Count: 4b
+					}
+				}
+				{
+					id: "0000000000000177"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Millstone + Steamer + Oil Press"
+			x: -4.5d
+			y: 3.7d
+			subtitle: "Kitchen industrialist"
+			description: [
+				"Kaleidoscope's kitchen goes industrial: the \u00a7bmillstone\u00a7r grinds, the \u00a7bsteamer\u00a7r steams, and pressed \u00a7boil\u00a7r fries. Three machines, no redstone, all flavor."
+				""
+				"The mod tracks each one."
+			]
+			id: "000000000000017F"
+			optional: true
+			dependencies: [
+				"000000000000016D"
+			]
+			tasks: [
+				{
+					id: "0000000000000179"
+					type: "advancement"
+					advancement: "kaleidoscope_cookery:millstone"
+					criterion: ""
+				}
+				{
+					id: "000000000000017A"
+					type: "advancement"
+					advancement: "kaleidoscope_cookery:steamer"
+					criterion: ""
+				}
+				{
+					id: "000000000000017B"
+					type: "advancement"
+					advancement: "kaleidoscope_cookery:oil"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000017C"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "000000000000017D"
+					type: "random"
+					table_id: 10L
+				}
+				{
+					id: "000000000000017E"
+					type: "xp"
+					xp: 400
+				}
+			]
+		}
+		{
+			title: "Dark Cuisine"
+			x: -4.5d
+			y: 5.2d
+			subtitle: "The forbidden menu"
+			description: [
+				"Some recipes should not exist. Kaleidoscope keeps them anyway, and an advancement for the chef willing to plate them."
+				""
+				"Cook the dark cuisine. Do not ask what it is. Do not serve it to guests you like."
+			]
+			id: "0000000000000183"
+			shape: "star"
+			optional: true
+			dependencies: [
+				"000000000000017F"
+			]
+			tasks: [
+				{
+					id: "0000000000000180"
+					type: "advancement"
+					advancement: "kaleidoscope_cookery:dark_cuisine"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000181"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000182"
+					type: "xp"
+					xp: 500
+				}
+			]
+		}
+	]
+}

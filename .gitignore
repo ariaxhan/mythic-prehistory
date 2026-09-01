@@ -1,0 +1,6 @@
+# Mod jars are build inputs but 231 MB of binaries; GitHub rejects files >100MB
+# and a repo of 107 jars is not something git should carry. The instance in
+# Prism is the source of truth; mods/ is rebuilt from it at deploy time.
+mods/
+logs/
+.cache/

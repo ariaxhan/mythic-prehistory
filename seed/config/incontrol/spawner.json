@@ -1,0 +1,107 @@
+[
+  {
+    "mob": ["shineals_prehistoric_expansion:dodo"],
+    "persecond": 0.03,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:triceratops"],
+    "persecond": 0.035,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:utahraptor"],
+    "persecond": 0.03,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:mammoth"],
+    "persecond": 0.025,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:amargasaurus"],
+    "persecond": 0.025,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:therizinosaurus"],
+    "persecond": 0.025,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:phorusrhacos"],
+    "persecond": 0.02,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:carnotaurus"],
+    "persecond": 0.018,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:spinosaurus"],
+    "persecond": 0.012,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:pteranodon"],
+    "persecond": 0.02,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:dimorphodon"],
+    "persecond": 0.018,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:harpy"],
+    "persecond": 0.012,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:ammonite"],
+    "persecond": 0.012,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true, "inwater": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:hippocampus"],
+    "persecond": 0.01,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true, "inwater": true}
+  },
+  {
+    "mob": ["shineals_prehistoric_expansion:dunkleosteus"],
+    "persecond": 0.008,
+    "attempts": 10,
+    "amount": {"minimum": 1, "maximum": 1},
+    "conditions": {"dimension": ["minecraft:overworld"], "mindist": 32.0, "maxdist": 96.0, "maxthis": 1, "norestrictions": true, "inwater": true}
+  }
+]

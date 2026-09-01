@@ -1,0 +1,48 @@
+[
+ {
+  "mob": [
+   "minecraft:zombie",
+   "minecraft:husk",
+   "minecraft:drowned",
+   "minecraft:zombie_villager"
+  ],
+  "random": 0.92,
+  "result": "deny"
+ },
+ {
+  "mob": [
+   "minecraft:phantom"
+  ],
+  "result": "deny"
+ },
+ {
+  "mob": [
+   "minecraft:skeleton",
+   "minecraft:stray"
+  ],
+  "random": 0.6,
+  "result": "deny"
+ },
+ {
+  "mob": [
+   "minecraft:creeper"
+  ],
+  "random": 0.5,
+  "result": "deny"
+ },
+ {
+  "mob": [
+   "minecraft:spider",
+   "minecraft:cave_spider"
+  ],
+  "random": 0.5,
+  "result": "deny"
+ },
+ {
+  "mob": [
+   "minecraft:slime"
+  ],
+  "random": 0.5,
+  "result": "deny"
+ }
+]

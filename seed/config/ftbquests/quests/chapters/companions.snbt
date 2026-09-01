@@ -1,0 +1,664 @@
+{
+	id: "00000000000000D8"
+	group: ""
+	order_index: 2
+	filename: "companions"
+	title: "Companions and Curiosities"
+	icon: "tameablebeasts:quetzalcoatlus_egg"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	images: []
+	quests: [
+		{
+			title: "Get Your First Creature Egg"
+			x: 0.0d
+			y: 0.0d
+			subtitle: "Tameable Beasts + Tiny Dragons"
+			description: [
+				"Some of the old world would rather join you than eat you."
+				""
+				"\u00a7aTameable Beasts\u00a7r: penguins, raccoons, geckos, giant beetles, argentavis, quetzalcoatlus."
+				"\u00a7dTiny Dragons\u00a7r: pocket-sized companions with real firepower."
+				""
+				"Start by getting your hands on any creature egg. Steal it, trade for it, find it; the book does not judge."
+			]
+			id: "0000000000000095"
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [
+				{
+					id: "0000000000000092"
+					type: "checkmark"
+					title: "Obtain any Tameable Beasts egg"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000093"
+					type: "choice"
+					table_id: 8L
+				}
+				{
+					id: "0000000000000094"
+					type: "xp"
+					xp: 100
+				}
+			]
+		}
+		{
+			title: "Tame Literally Anything"
+			x: -1.5d
+			y: 1.5d
+			subtitle: "They follow now"
+			description: [
+				"Every species has its own taming food and its own opinion of you. JEI plus patience wins."
+				""
+				"Tame any creature, then pick your hunting kit."
+			]
+			id: "0000000000000099"
+			dependencies: [
+				"0000000000000095"
+			]
+			tasks: [
+				{
+					id: "0000000000000096"
+					type: "checkmark"
+					title: "Tame any creature"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000097"
+					type: "choice"
+					table_id: 5L
+				}
+				{
+					id: "0000000000000098"
+					type: "xp"
+					xp: 200
+				}
+			]
+		}
+		{
+			title: "Hatch a Quetzal, Own the Sky"
+			x: -1.5d
+			y: 3.0d
+			subtitle: "Your personal pterosaur"
+			description: [
+				"The \u00a7bquetzalcoatlus\u00a7r is the largest flying animal that ever lived. Hatch one, raise it, and the sky is yours: no elytra required."
+				""
+				"The Greeks had Pegasus. You have something with a ten-meter wingspan and opinions."
+			]
+			id: "000000000000009E"
+			dependencies: [
+				"0000000000000099"
+			]
+			tasks: [
+				{
+					id: "000000000000009A"
+					type: "advancement"
+					advancement: "tameablebeasts:quetzalcoatlus"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000009B"
+					type: "item"
+					item: {
+						id: "minecraft:saddle"
+						Count: 1b
+					}
+				}
+				{
+					id: "000000000000009C"
+					type: "item"
+					item: {
+						id: "tameablebeasts:pteranodon_meal"
+						Count: 4b
+					}
+				}
+				{
+					id: "000000000000009D"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Craft the Beetle Sword"
+			x: 0.0d
+			y: 2.0d
+			subtitle: "The insect-industrial complex"
+			description: [
+				"Giant beetles are tank, mount, and armory in one shell. Beetle gems and dust craft into \u00a7bbug armor\u00a7r, a beetle shield, even a \u00a7bbug elytra\u00a7r."
+				""
+				"Craft any piece of beetle gear."
+			]
+			id: "00000000000000A2"
+			optional: true
+			dependencies: [
+				"0000000000000095"
+			]
+			tasks: [
+				{
+					id: "000000000000009F"
+					type: "item"
+					item: "tameablebeasts:beetle_sword"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000A0"
+					type: "item"
+					item: {
+						id: "tameablebeasts:beetle_dust"
+						Count: 4b
+					}
+				}
+				{
+					id: "00000000000000A1"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Cage a Tiny Dragon"
+			x: 1.5d
+			y: 1.5d
+			subtitle: "RPG Companions: Tiny Dragons"
+			description: [
+				"\u00a7dTiny dragons\u00a7r hide across the world. Craft a capture cage, find one, and convince it you are worth following."
+				""
+				"The trainer's staff directs your new friend in battle."
+			]
+			id: "00000000000000A6"
+			dependencies: [
+				"0000000000000095"
+			]
+			tasks: [
+				{
+					id: "00000000000000A3"
+					type: "item"
+					item: "rpg_companions_tiny_dragons:open_capture_cage"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000A4"
+					type: "item"
+					item: {
+						id: "rpg_companions_tiny_dragons:dragon_trainers_staff"
+						Count: 1b
+					}
+				}
+				{
+					id: "00000000000000A5"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Build a Scarecrow (It's Alive)"
+			x: 1.5d
+			y: 3.0d
+			subtitle: "Free labor, mildly haunted"
+			description: [
+				"A \u00a7escarecrow\u00a7r animated by an allay will watch your fields while you are off bothering spinosaurs."
+				""
+				"Build one. It asks for nothing. It sees everything."
+			]
+			id: "00000000000000A9"
+			optional: true
+			dependencies: [
+				"00000000000000A6"
+			]
+			tasks: [
+				{
+					id: "00000000000000A7"
+					type: "advancement"
+					advancement: "tameablebeasts:scarecrow_allay"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000A8"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Meet a Wraptor, Rob Its Nest"
+			x: 0.0d
+			y: 4.5d
+			subtitle: "Species"
+			description: [
+				"Not everything out there is in a textbook. \u00a75Species\u00a7r adds creatures evolution only dreamed of."
+				""
+				"The \u00a7cwraptor\u00a7r struts the badlands like it invented legs. Look one in the eye, then steal an egg if you dare the parents."
+				""
+				"Somewhere far stranger: the \u00a7cghoul\u00a7r, the \u00a7ccruncher\u00a7r, and the \u00a7cmammutilation\u00a7r, which you will wish you had not looked at."
+			]
+			id: "00000000000000AF"
+			dependencies: [
+				"0000000000000099"
+				"00000000000000A6"
+			]
+			tasks: [
+				{
+					id: "00000000000000AA"
+					type: "observation"
+					observe_type: 4
+					timer: 10L
+					to_observe: "species:wraptor"
+					title: "Look at a wraptor"
+				}
+				{
+					id: "00000000000000AB"
+					type: "advancement"
+					advancement: "species:species/v1/hatch_wraptor"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000AC"
+					type: "item"
+					item: {
+						id: "minecraft:slime_ball"
+						Count: 4b
+					}
+				}
+				{
+					id: "00000000000000AD"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000000AE"
+					type: "xp"
+					xp: 300
+				}
+			]
+		}
+		{
+			title: "Brush Your Beast"
+			x: -1.5d
+			y: 4.5d
+			subtitle: "Animal husbandry, the good part"
+			description: [
+				"Tamed beasts can be \u00a7bbrushed\u00a7r. They like it. You will also like it. This is not optional content emotionally, only mechanically."
+				""
+				"Brush any tamed beast."
+			]
+			id: "00000000000000B2"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"0000000000000099"
+			]
+			tasks: [
+				{
+					id: "00000000000000B0"
+					type: "advancement"
+					advancement: "tameablebeasts:brush_a_beast"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000B1"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Tickle the Goober"
+			x: 1.5d
+			y: 4.5d
+			subtitle: "Science demanded it"
+			description: [
+				"The \u00a7dgoober\u00a7r is a big, damp, benevolent absurdity. Species gives you exactly one correct way to interact with it."
+				""
+				"Tickle it. There is an advancement for this. Now there is a quest too."
+			]
+			id: "00000000000000B6"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"00000000000000AF"
+			]
+			tasks: [
+				{
+					id: "00000000000000B3"
+					type: "advancement"
+					advancement: "species:species/v2/tickle_goober"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000B4"
+					type: "item"
+					item: {
+						id: "minecraft:slime_ball"
+						Count: 8b
+					}
+				}
+				{
+					id: "00000000000000B5"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Do Not Perceive It"
+			x: 0.0d
+			y: 6.0d
+			subtitle: "Species' worst idea, your problem"
+			description: [
+				"Somewhere in the cold dark lives the \u00a7cmammutilation\u00a7r. The mod's own advancement for meeting its gaze is not a joke, and neither is this warning."
+				""
+				"Look at it anyway."
+			]
+			id: "00000000000000BA"
+			shape: "star"
+			optional: true
+			dependencies: [
+				"00000000000000AF"
+			]
+			tasks: [
+				{
+					id: "00000000000000B7"
+					type: "advancement"
+					advancement: "species:species/v2/look_at_mammutilation"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000B8"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000000B9"
+					type: "xp"
+					xp: 400
+				}
+			]
+		}
+		{
+			title: "Bucket a Glowing Deepfish"
+			x: 3.0d
+			y: 2.0d
+			subtitle: "Species"
+			description: [
+				"The \u00a75deepfish\u00a7r glows in the drowned dark of the deepest caves. Species tracks the catch itself."
+				""
+				"Scoop one into a bucket and bring the light home for your aquarium."
+			]
+			id: "00000000000000BE"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"0000000000000095"
+			]
+			tasks: [
+				{
+					id: "00000000000000BB"
+					type: "advancement"
+					advancement: "species:species/v1/deepfish_in_a_bucket"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000BC"
+					type: "random"
+					table_id: 11L
+				}
+				{
+					id: "00000000000000BD"
+					type: "xp"
+					xp: 300
+				}
+			]
+		}
+		{
+			title: "Shear a Wraptor Completely Bald"
+			x: 3.0d
+			y: 3.5d
+			subtitle: "The golden fleece, technically"
+			description: [
+				"Wraptors grow magnificent plumage and resent barbers. Shear one \u00a7bcompletely\u00a7r; every last feather."
+				""
+				"Jason got a whole legend out of one fleece. You get a quest and the feathers."
+			]
+			id: "00000000000000C2"
+			optional: true
+			dependencies: [
+				"00000000000000AF"
+			]
+			tasks: [
+				{
+					id: "00000000000000BF"
+					type: "advancement"
+					advancement: "species:species/v1/shear_wraptor_completely"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000C0"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000000C1"
+					type: "xp"
+					xp: 300
+				}
+			]
+		}
+		{
+			title: "Youth Potion: Baby-fy Something"
+			x: 1.5d
+			y: 6.0d
+			subtitle: "Ichor, applied"
+			description: [
+				"The \u00a7dyouth potion\u00a7r distilled from ichor does exactly what the conquistadors hoped: throw it at a grown creature and watch the years run backward."
+				""
+				"Turn any mob into a baby. For science. For cuteness. For deeply unsettling reasons."
+			]
+			id: "00000000000000C6"
+			shape: "star"
+			optional: true
+			dependencies: [
+				"00000000000000AF"
+			]
+			tasks: [
+				{
+					id: "00000000000000C3"
+					type: "advancement"
+					advancement: "species:species/v2/turn_mob_into_baby"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000C4"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000000C5"
+					type: "xp"
+					xp: 500
+				}
+			]
+		}
+		{
+			title: "Survive the Ghoul (Just Run)"
+			x: -1.5d
+			y: 6.0d
+			subtitle: "Run"
+			description: [
+				"Somewhere cold and wrong, a \u00a7cghoul\u00a7r will find you. Species gives an advancement not for killing it, but for \u00a7bliving through it\u00a7r."
+				""
+				"Survive the encounter. Heroism is sometimes just cardio."
+			]
+			id: "00000000000000CA"
+			optional: true
+			dependencies: [
+				"00000000000000AF"
+			]
+			tasks: [
+				{
+					id: "00000000000000C7"
+					type: "advancement"
+					advancement: "species:species/v3/survive_ghoul"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000C8"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000000C9"
+					type: "xp"
+					xp: 400
+				}
+			]
+		}
+		{
+			title: "The Spectre's Game"
+			x: 0.0d
+			y: 7.5d
+			subtitle: "Species' endgame"
+			description: [
+				"Summon the \u00a75spectre\u00a7r and accept its challenge: Species' strangest ritual, and it does not explain itself twice."
+				""
+				"Both steps tracked; the summoning, then the game."
+			]
+			id: "00000000000000D0"
+			shape: "star"
+			dependencies: [
+				"00000000000000C6"
+				"00000000000000CA"
+			]
+			tasks: [
+				{
+					id: "00000000000000CB"
+					type: "advancement"
+					advancement: "species:species/v3/summon_spectre"
+					criterion: ""
+				}
+				{
+					id: "00000000000000CC"
+					type: "advancement"
+					advancement: "species:species/v3/start_spectre_challenge"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000CD"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000000CE"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000000CF"
+					type: "xp"
+					xp: 800
+				}
+			]
+		}
+		{
+			title: "Build the Fur Golem"
+			x: -3.0d
+			y: 2.0d
+			subtitle: "Soft security"
+			description: [
+				"Raccoon fur, stacked with intent, becomes a \u00a7bfur golem\u00a7r: Tameable Beasts' softest guardian."
+				""
+				"Build one. Talos walked so this thing could waddle."
+			]
+			id: "00000000000000D4"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"0000000000000099"
+			]
+			tasks: [
+				{
+					id: "00000000000000D1"
+					type: "advancement"
+					advancement: "tameablebeasts:fur_golem"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000D2"
+					type: "item"
+					item: {
+						id: "tameablebeasts:racoon_fur"
+						Count: 8b
+					}
+				}
+				{
+					id: "00000000000000D3"
+					type: "random"
+					table_id: 10L
+				}
+			]
+		}
+		{
+			title: "Solve the Purple Allay Mystery"
+			x: -3.0d
+			y: 3.5d
+			subtitle: "A mystery with wings"
+			description: [
+				"Something happened to this allay. It is purple now. Tameable Beasts knows what it did."
+				""
+				"Find out for yourself."
+			]
+			id: "00000000000000D7"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"0000000000000099"
+			]
+			tasks: [
+				{
+					id: "00000000000000D5"
+					type: "advancement"
+					advancement: "tameablebeasts:purple_allay"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000D6"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+	]
+}

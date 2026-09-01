@@ -1,0 +1,57 @@
+version: 1
+project: mythic-prehistory
+
+modes:
+  PLAYING:
+    condition: machine started and player count greater than zero
+    allow: [read_only, bounded_effect_or_give_rcon, proven_hot_reload]
+    deny: [deploy, restart, stop, pregen, bulk_validation, world_restore]
+  MAINTENANCE:
+    condition: machine started, READY, and player count is zero
+    allow: [read_only, bounded_rcon, backup, deploy, restart, pregen]
+    deny: [world_restore_without_explicit_confirmation]
+  OFFLINE:
+    condition: machine stopped
+    allow: [repo_work, client_pack_work, deploy]
+    deny: [live_claims_without_starting_and_verifying]
+  UNKNOWN:
+    condition: occupancy or server state cannot be determined
+    allow: [read_only]
+    deny: [deploy, restart, stop, pregen, bulk_validation, world_restore]
+
+layers:
+  client:
+    evidence: PrismLauncher instance logs and config
+    persistence: client restart and possible config writeback on exit
+  server_runtime:
+    evidence: status endpoint, console log, crash report, RCON
+    persistence: process lifetime only unless backed by another layer
+  world_state:
+    evidence: RCON and world files
+    persistence: level.dat, playerdata, datapacks, or mod world data
+  world_serverconfig:
+    evidence: /data/world/serverconfig
+    persistence: world-local and restart-dependent unless proven reloadable
+  pack_seed:
+    evidence: seed/config, seed/defaultconfigs, seed/default-server.properties
+    persistence: new world or entrypoint reconciliation, depending on owner
+  image:
+    evidence: Dockerfile, docker/, mods/, deployed image, fresh boot
+    persistence: deploy-dependent
+
+always_prohibited:
+  - expose secrets in files, logs, commands, or receipts
+  - treat unknown player count as zero
+  - run bulk registry or loot validation while players are connected
+  - edit a generated or live file without identifying its durable owner
+  - claim a config controls both client and server without proving config sync
+
+verification:
+  local:
+    - bash -n mpctl scripts/*.sh docker/*.sh
+    - python3 -m py_compile docker/*.py scripts/*.py
+    - python3 scripts/analyze_logs.py --self-test
+    - bash scripts/test-live-ops.sh
+  live_read_only:
+    - ./mpctl doctor
+    - ./mpctl snapshot

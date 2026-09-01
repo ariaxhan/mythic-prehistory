@@ -1,0 +1,13 @@
+name = "Pelagic Prehistory"
+filename = "pelagic_prehistory-20.1.3.2.jar"
+side = "both"
+
+[download]
+hash = "957e142f523c43771dc8100023e44b0dae5ba028"
+hash-format = "sha1"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7573851
+project-id = 865244

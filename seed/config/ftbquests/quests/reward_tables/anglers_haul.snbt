@@ -1,0 +1,112 @@
+{
+	id: "000000000000000B"
+	order_index: 10
+	loot_size: 2
+	title: "Anglers Haul"
+	use_title: true
+	icon: "aquaculture:tuna"
+	rewards: [
+		{
+			item: {
+				id: "aquaculture:rainbow_trout"
+				Count: 2b
+			}
+			weight: 10.0f
+		}
+		{
+			item: "aquaculture:tuna"
+			weight: 8.0f
+		}
+		{
+			item: {
+				id: "aquaculture:piranha"
+				Count: 2b
+			}
+			weight: 8.0f
+		}
+		{
+			item: "aquaculture:jellyfish"
+			weight: 6.0f
+		}
+		{
+			item: "aquaculture:red_grouper"
+			weight: 6.0f
+		}
+		{
+			item: "aquaculture:arapaima"
+			weight: 4.0f
+		}
+		{
+			item: {
+				id: "fishofthieves:cooked_stormfish"
+				Count: 2b
+			}
+			weight: 6.0f
+		}
+		{
+			item: {
+				id: "fishofthieves:cooked_battlegill"
+				Count: 2b
+			}
+			weight: 6.0f
+		}
+		{
+			item: "aquaculture:goldfish"
+			weight: 3.0f
+		}
+		{
+			item: "aquaculture:turtle_soup"
+			weight: 5.0f
+		}
+		{
+			item: {
+				id: "aquaculture:sushi"
+				Count: 3b
+			}
+			weight: 8.0f
+		}
+		{
+			item: "aquaculture:tackle_box"
+			weight: 4.0f
+		}
+		{
+			item: "aquaculture:worm_farm"
+			weight: 4.0f
+		}
+		{
+			item: "aquaculture:heavy_hook"
+			weight: 6.0f
+		}
+		{
+			item: "aquaculture:light_hook"
+			weight: 6.0f
+		}
+		{
+			item: "aquaculture:double_obsidian_hook"
+			weight: 3.0f
+		}
+		{
+			item: {
+				id: "aquaculture:neptunium_nugget"
+				Count: 2b
+			}
+			weight: 4.0f
+		}
+		{
+			item: "fishofthieves:gilded_oak_fish_plaque"
+			weight: 3.0f
+		}
+		{
+			item: "aquaculture:bluegill_bucket"
+			weight: 3.0f
+		}
+		{
+			item: "aquaculture:jellyfish_bucket"
+			weight: 2.0f
+		}
+		{
+			item: "aquaculture:arapaima_bucket"
+			weight: 1.0f
+		}
+	]
+}

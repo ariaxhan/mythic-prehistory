@@ -1,0 +1,454 @@
+{
+	id: "000000000000003E"
+	group: ""
+	order_index: 0
+	filename: "welcome"
+	title: "Welcome, Wanderer"
+	icon: "minecraft:amethyst_cluster"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	images: []
+	quests: [
+		{
+			title: "Punch Wood, Meet Destiny"
+			x: 0.0d
+			y: 0.0d
+			subtitle: "Every myth starts somewhere"
+			description: [
+				"Welcome to \u00a76Mythic Prehistory\u00a7r."
+				""
+				"Long before the first hero strung a bow, the old world walked on claw and scale. This land never forgot. Dinosaurs still roam its valleys, harpies nest in its cliffs, and the gods still meddle in its weather."
+				""
+				"This book is your guide. Each chapter teaches one part of the pack, and most quests complete \u00a7bthemselves\u00a7r: kill the beast, stand in the biome, look at the creature, and the book notices."
+				""
+				"Rewards come three ways: items outright, \u00a7ba choice of one from several\u00a7r, or \u00a7da random draw from a loot crate\u00a7r. The rarer the crate, the wilder the odds."
+				""
+				"First: the oldest ritual. Craft a table and the book hands you the \u00a76Wanderer's Kit\u00a7r: a backpack, a spear, a rod with a lucky hook, a warp stone, a sleeping bag, a dragon cage, and a poacher's breakfast: dodo eggs, juniper berries, and two golden salads. Not power; a head start."
+			]
+			id: "000000000000001C"
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					id: "000000000000000D"
+					type: "item"
+					item: "minecraft:crafting_table"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000000E"
+					type: "item"
+					item: {
+						id: "sophisticatedbackpacks:backpack"
+						Count: 1b
+					}
+				}
+				{
+					id: "000000000000000F"
+					type: "item"
+					item: {
+						id: "simplyswords:iron_spear"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000010"
+					type: "item"
+					item: {
+						id: "minecraft:iron_pickaxe"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000011"
+					type: "item"
+					item: {
+						id: "aquaculture:iron_fishing_rod"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000012"
+					type: "item"
+					item: {
+						id: "aquaculture:gold_hook"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000013"
+					type: "item"
+					item: {
+						id: "waystones:warp_stone"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000014"
+					type: "item"
+					item: {
+						id: "comforts:sleeping_bag_red"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000015"
+					type: "item"
+					item: {
+						id: "rpg_companions_tiny_dragons:open_capture_cage"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000016"
+					type: "item"
+					item: {
+						id: "shineals_prehistoric_expansion:cooked_dodo_egg"
+						Count: 6b
+					}
+				}
+				{
+					id: "0000000000000017"
+					type: "item"
+					item: {
+						id: "shineals_prehistoric_expansion:juniper_berries"
+						Count: 16b
+					}
+				}
+				{
+					id: "0000000000000018"
+					type: "item"
+					item: {
+						id: "kaleidoscope_cookery:golden_salad"
+						Count: 2b
+					}
+				}
+				{
+					id: "0000000000000019"
+					type: "item"
+					item: {
+						id: "minecraft:torch"
+						Count: 32b
+					}
+				}
+				{
+					id: "000000000000001A"
+					type: "random"
+					table_id: 10L
+				}
+				{
+					id: "000000000000001B"
+					type: "xp"
+					xp: 50
+				}
+			]
+		}
+		{
+			title: "Open the Map, Drop a Pin"
+			x: -2.0d
+			y: 1.5d
+			subtitle: "Terralith + Tectonic + Xaero's"
+			description: [
+				"Press \u00a7bM\u00a7r for Xaero's World Map; the minimap lives in the corner of your screen."
+				""
+				"This terrain is not vanilla. Terralith and Tectonic rebuilt the world with skylands, canyons, and hundred-block cliffs. Set a waypoint (\u00a7bB\u00a7r) at your spawn before you wander; you will not find it again by memory."
+			]
+			id: "0000000000000021"
+			dependencies: [
+				"000000000000001C"
+			]
+			tasks: [
+				{
+					id: "000000000000001D"
+					type: "checkmark"
+					title: "Set a waypoint at your spawn"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000001E"
+					type: "item"
+					item: {
+						id: "minecraft:map"
+						Count: 1b
+					}
+				}
+				{
+					id: "000000000000001F"
+					type: "random"
+					table_id: 1L
+				}
+				{
+					id: "0000000000000020"
+					type: "random"
+					table_id: 10L
+				}
+			]
+		}
+		{
+			title: "Type /sethome. Now."
+			x: 2.0d
+			y: 1.5d
+			subtitle: "FTB Essentials"
+			description: [
+				"FTB Essentials gives you commands worthy of a demigod:"
+				""
+				"\u00a7b/sethome base\u00a7r then \u00a7b/home base\u00a7r to return."
+				"\u00a7b/back\u00a7r returns you to where you died."
+				"\u00a7b/rtp\u00a7r throws you somewhere random and far."
+				""
+				"Run /sethome now. Future-you, treed by a carnotaurus at dusk, says thanks."
+			]
+			id: "0000000000000024"
+			dependencies: [
+				"000000000000001C"
+			]
+			tasks: [
+				{
+					id: "0000000000000022"
+					type: "checkmark"
+					title: "Run /sethome"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000023"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "JEI: Every Recipe, One Search"
+			x: -2.0d
+			y: 3.5d
+			subtitle: "JEI + Jade"
+			description: [
+				"Open your inventory. The panel on the right is \u00a7eJEI\u00a7r: every item in the pack."
+				""
+				"Hover anything: \u00a7bR\u00a7r shows its recipe, \u00a7bU\u00a7r shows what it makes. Type \u00a7b@shineals\u00a7r to see one mod's whole catalog."
+				""
+				"And look at any chest: \u00a7eJade\u00a7r shows its contents in the HUD without opening it. Craft a torch to prove you found the crafting screen."
+			]
+			id: "0000000000000027"
+			dependencies: [
+				"000000000000001C"
+			]
+			tasks: [
+				{
+					id: "0000000000000025"
+					type: "item"
+					item: "minecraft:torch"
+					count: 8L
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000026"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Craft a Backpack"
+			x: 2.0d
+			y: 3.5d
+			subtitle: "Sophisticated Backpacks"
+			description: [
+				"A Sophisticated Backpack is portable storage that grows in stages. Upgrade the bag from leather to copper, iron, gold, diamond, then netherite; each tier earns its extra slots."
+				""
+				"Start with \u00a7bPickup + Filter\u00a7r for fossils and food. Add \u00a7bDeposit or Restock\u00a7r when your storage room exists. Magnet, automation, and large stack upgrades cost real materials, so the bag grows with your world instead of replacing progression on day one."
+				""
+				"Backpack enchantment books now explain themselves in their tooltips. JEI shows every upgrade recipe."
+				""
+				"You will fill it with fossils, fish, and dubious eggs soon enough."
+			]
+			id: "000000000000002C"
+			dependencies: [
+				"0000000000000027"
+			]
+			tasks: [
+				{
+					id: "0000000000000028"
+					type: "item"
+					item: "sophisticatedbackpacks:backpack"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000029"
+					type: "item"
+					item: {
+						id: "minecraft:leather"
+						Count: 8b
+					}
+				}
+				{
+					id: "000000000000002A"
+					type: "random"
+					table_id: 1L
+				}
+				{
+					id: "000000000000002B"
+					type: "random"
+					table_id: 10L
+				}
+			]
+		}
+		{
+			title: "Waystones 101: Craft a Warp Stone"
+			x: 0.0d
+			y: 3.0d
+			subtitle: "Fast travel, earned"
+			description: [
+				"Commands are for emergencies; \u00a7eWaystones\u00a7r are the civilized way to travel. They stand in villages and ruins; touch one to bind it, then warp between any you know."
+				""
+				"Craft a Warp Stone to reach your waystones from anywhere."
+			]
+			id: "0000000000000031"
+			dependencies: [
+				"0000000000000021"
+				"0000000000000024"
+			]
+			tasks: [
+				{
+					id: "000000000000002D"
+					type: "item"
+					item: "waystones:warp_stone"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000002E"
+					type: "item"
+					item: {
+						id: "waystones:waystone"
+						Count: 1b
+					}
+				}
+				{
+					id: "000000000000002F"
+					type: "random"
+					table_id: 1L
+				}
+				{
+					id: "0000000000000030"
+					type: "xp"
+					xp: 100
+				}
+			]
+		}
+		{
+			title: "Sleep Through Night One"
+			x: 0.0d
+			y: 5.0d
+			subtitle: "A bed is a save point"
+			description: [
+				"The classics still apply. A bed, a door, a wall. The things outside at night here are faster than zombies and some of them fly."
+				""
+				"Sleep once. The book will know."
+			]
+			id: "0000000000000035"
+			dependencies: [
+				"0000000000000031"
+			]
+			tasks: [
+				{
+					id: "0000000000000032"
+					type: "advancement"
+					advancement: "minecraft:adventure/sleep_in_bed"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000033"
+					type: "random"
+					table_id: 1L
+				}
+				{
+					id: "0000000000000034"
+					type: "xp"
+					xp: 100
+				}
+			]
+		}
+		{
+			title: "Your First Trinket Finds You"
+			x: 0.0d
+			y: 6.5d
+			subtitle: "Lost Trinkets Renewed"
+			description: [
+				"As you mine, fight, fish, and wander, you will uncover \u00a7dLost Trinkets\u00a7r: passive charms that stack into real power. They find you; keep playing."
+				""
+				"Open the trinkets screen when the first one lands."
+			]
+			id: "0000000000000039"
+			dependencies: [
+				"0000000000000035"
+			]
+			tasks: [
+				{
+					id: "0000000000000036"
+					type: "checkmark"
+					title: "Find your first Lost Trinket"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000037"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "0000000000000038"
+					type: "xp"
+					xp: 150
+				}
+			]
+		}
+		{
+			title: "Die Once (You Keep Your Stuff)"
+			x: -2.0d
+			y: 5.0d
+			subtitle: "Corpse + Ore Excavation + Carry On"
+			description: [
+				"When you die here, your body \u00a7bstays where it fell\u00a7r with everything on it. No despawn timer, no item scatter: walk back and loot yourself."
+				""
+				"Also learn these before you need them: hold the \u00a7bOre Excavation key\u00a7r (default ~) while mining to take a whole vein or tree at once, and \u00a7bpick up chests and creatures\u00a7r with an empty hand while sneaking (Carry On)."
+				""
+				"This quest asks the one thing every legend does eventually: die, and come back for your things."
+			]
+			id: "000000000000003D"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"0000000000000035"
+			]
+			tasks: [
+				{
+					id: "000000000000003A"
+					type: "checkmark"
+					title: "Die once and recover your corpse"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000003B"
+					type: "item"
+					item: {
+						id: "minecraft:totem_of_undying"
+						Count: 1b
+					}
+				}
+				{
+					id: "000000000000003C"
+					type: "xp"
+					xp: 150
+				}
+			]
+		}
+	]
+}

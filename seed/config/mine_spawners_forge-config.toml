@@ -1,0 +1,4 @@
+["Mine Spawners Config"]
+	# Chance of dropping the spawner when mined with a Silk Touch pickaxe.
+	# Range: 0.0 ~ 1.0
+	dropChance = 1.0

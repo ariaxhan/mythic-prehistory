@@ -1,0 +1,102 @@
+{
+	id: "000000000000000C"
+	order_index: 11
+	loot_size: 2
+	title: "Fossil Cache"
+	use_title: true
+	icon: "pelagic_prehistory:fossil"
+	rewards: [
+		{
+			item: "pelagic_prehistory:fossil"
+			weight: 10.0f
+		}
+		{
+			item: {
+				id: "pelagic_prehistory:ancient_sediment_fossil"
+				Count: 2b
+			}
+			weight: 8.0f
+		}
+		{
+			item: "pelagic_prehistory:ancient_sediment_tablets"
+			weight: 6.0f
+		}
+		{
+			item: {
+				id: "shineals_prehistoric_expansion:ammonite_shell"
+				Count: 2b
+			}
+			weight: 8.0f
+		}
+		{
+			item: "shineals_prehistoric_expansion:dodo_skeleton"
+			weight: 4.0f
+		}
+		{
+			item: "shineals_prehistoric_expansion:anurognathus_skeleton"
+			weight: 3.0f
+		}
+		{
+			item: "shineals_prehistoric_expansion:opabinia_skeleton"
+			weight: 3.0f
+		}
+		{
+			item: "shineals_prehistoric_expansion:utahraptor_skeleton"
+			weight: 2.0f
+		}
+		{
+			item: "shineals_prehistoric_expansion:therizinosaurus_claw"
+			weight: 4.0f
+		}
+		{
+			item: "shineals_prehistoric_expansion:jaekelopterus_claw"
+			weight: 4.0f
+		}
+		{
+			item: "pelagic_prehistory:dunkleosteus_vial"
+			weight: 3.0f
+		}
+		{
+			item: "pelagic_prehistory:cladoselache_vial"
+			weight: 3.0f
+		}
+		{
+			item: "pelagic_prehistory:henodus_vial"
+			weight: 3.0f
+		}
+		{
+			item: "pelagic_prehistory:ginkgo_tree_vial"
+			weight: 2.0f
+		}
+		{
+			item: "tameablebeasts:crested_gecko_egg"
+			weight: 3.0f
+		}
+		{
+			item: "tameablebeasts:penguin_egg"
+			weight: 3.0f
+		}
+		{
+			item: "tameablebeasts:quetzalcoatlus_egg"
+			weight: 1.0f
+		}
+		{
+			item: "species:petrified_egg"
+			weight: 2.0f
+		}
+		{
+			item: {
+				id: "shineals_prehistoric_expansion:cooked_mammoth_meat"
+				Count: 4b
+			}
+			weight: 8.0f
+		}
+		{
+			item: {
+				id: "shineals_prehistoric_expansion:juniper_berries"
+				Count: 8b
+			}
+			weight: 8.0f
+		}
+	]
+}

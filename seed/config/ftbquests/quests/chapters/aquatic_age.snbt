@@ -1,0 +1,637 @@
+{
+	id: "0000000000000146"
+	group: ""
+	order_index: 4
+	filename: "aquatic_age"
+	title: "The Aquatic Age"
+	icon: "aquaculture:iron_fishing_rod"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	images: []
+	quests: [
+		{
+			title: "Dig Up a Worm"
+			x: 0.0d
+			y: 0.0d
+			subtitle: "Aquaculture + Fish of Thieves + Kaleidoscope Cookery"
+			description: [
+				"The waters of this world are older than the land and twice as alive: over thirty species from \u00a7eAquaculture 2\u00a7r and the rare shoals of \u00a7eFish of Thieves\u00a7r."
+				""
+				"This chapter is about \u00a7bkeeping\u00a7r them: catching them alive, housing them, feeding them, and completing the great collection."
+				""
+				"Start where every naturalist starts: dig up a worm (break grass, till dirt). Bait, not dinner."
+			]
+			id: "0000000000000102"
+			shape: "circle"
+			size: 1.5d
+			tasks: [
+				{
+					id: "00000000000000FE"
+					type: "item"
+					item: "aquaculture:worm"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000000FF"
+					type: "item"
+					item: {
+						id: "aquaculture:bobber"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000100"
+					type: "random"
+					table_id: 1L
+				}
+				{
+					id: "0000000000000101"
+					type: "random"
+					table_id: 10L
+				}
+			]
+		}
+		{
+			title: "Craft the Real Fishing Rod"
+			x: -2.0d
+			y: 1.5d
+			subtitle: "Hooks change everything"
+			description: [
+				"Aquaculture's iron rod takes bait and a \u00a7bhook slot\u00a7r. Gold hooks for luck, redstone for speed, note hooks that ping on a bite."
+				""
+				"Craft the rod and catch your first fish. Every biome hides different species; each one you meet is an entry in the collection, not a meal."
+			]
+			id: "0000000000000107"
+			dependencies: [
+				"0000000000000102"
+			]
+			tasks: [
+				{
+					id: "0000000000000103"
+					type: "item"
+					item: "aquaculture:iron_fishing_rod"
+				}
+				{
+					id: "0000000000000104"
+					type: "advancement"
+					advancement: "minecraft:husbandry/fishy_business"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000105"
+					type: "item"
+					item: {
+						id: "aquaculture:gold_hook"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000106"
+					type: "random"
+					table_id: 11L
+				}
+			]
+		}
+		{
+			title: "Bucket a Live Fish"
+			x: -2.0d
+			y: 3.0d
+			subtitle: "Catch, don't cook"
+			description: [
+				"A hook brings a fish up; a \u00a7bbucket\u00a7r brings it home alive."
+				""
+				"Scoop any fish into a water bucket. This is how the aquarium gets its residents and how rare species survive the trip."
+			]
+			id: "000000000000010B"
+			dependencies: [
+				"0000000000000107"
+			]
+			tasks: [
+				{
+					id: "0000000000000108"
+					type: "advancement"
+					advancement: "minecraft:husbandry/tactical_fishing"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000109"
+					type: "item"
+					item: {
+						id: "minecraft:bucket"
+						Count: 2b
+					}
+				}
+				{
+					id: "000000000000010A"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Fish Up Sunken Treasure"
+			x: -2.0d
+			y: 4.5d
+			subtitle: "The sea pays its debts"
+			description: [
+				"The sea pays its debts: \u00a76treasure chests\u00a7r, lockboxes, messages in bottles, and for the truly favored, \u00a7bNeptune's Bounty\u00a7r."
+				""
+				"Pull any treasure from the deep, then pick your angler's prize."
+			]
+			id: "000000000000010F"
+			dependencies: [
+				"000000000000010B"
+			]
+			tasks: [
+				{
+					id: "000000000000010C"
+					type: "checkmark"
+					title: "Fish up a treasure item (box, lockbox, chest, or better)"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000010D"
+					type: "choice"
+					table_id: 7L
+				}
+				{
+					id: "000000000000010E"
+					type: "xp"
+					xp: 250
+				}
+			]
+		}
+		{
+			title: "Build a Fish Tank"
+			x: 2.0d
+			y: 1.5d
+			subtitle: "Better Fishtanks"
+			description: [
+				"Better Fishtanks gives your catches a real home: a \u00a7bfish tank\u00a7r where they live, swim, and outlast every dinner you didn't make of them."
+				""
+				"Build one and move a bucketed fish in. A base with an aquarium is a home."
+			]
+			id: "0000000000000113"
+			dependencies: [
+				"0000000000000102"
+			]
+			tasks: [
+				{
+					id: "0000000000000110"
+					type: "item"
+					item: "betterfishtanks:fish_tank_block"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000111"
+					type: "item"
+					item: {
+						id: "betterfishtanks:aquarist_table"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000112"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Craft Fish Food"
+			x: 2.0d
+			y: 3.0d
+			subtitle: "Husbandry, but wetter"
+			description: [
+				"Kept fish are fed fish. Better Fishtanks has a whole pantry: \u00a7bflakes, pellets, dried kelp, mini shrimp\u00a7r."
+				""
+				"Craft fish food and keep the tank thriving. The aquarist table can even coax \u00a7beggs\u00a7r from happy residents: rare species, bred at home."
+			]
+			id: "0000000000000117"
+			dependencies: [
+				"0000000000000113"
+			]
+			tasks: [
+				{
+					id: "0000000000000114"
+					type: "item"
+					item: "betterfishtanks:flakes_container"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000115"
+					type: "item"
+					item: {
+						id: "betterfishtanks:pellet_mix"
+						Count: 4b
+					}
+				}
+				{
+					id: "0000000000000116"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Play a Jukebox for Your Fish"
+			x: 2.0d
+			y: 4.5d
+			subtitle: "They can hear it"
+			description: [
+				"Fish of Thieves' own advancement: \u00a7bplay a jukebox near fish\u00a7r and watch them respond."
+				""
+				"Your aquarium deserves a soundtrack. The fish agree."
+			]
+			id: "000000000000011B"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"0000000000000117"
+			]
+			tasks: [
+				{
+					id: "0000000000000118"
+					type: "advancement"
+					advancement: "fishofthieves:play_jukebox_near_fish"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000119"
+					type: "item"
+					item: {
+						id: "minecraft:music_disc_cat"
+						Count: 1b
+					}
+				}
+				{
+					id: "000000000000011A"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Birdwatch, but for Fish"
+			x: -3.5d
+			y: 1.5d
+			subtitle: "Look, don't grab"
+			description: [
+				"A naturalist observes before touching. Fish of Thieves rewards watching \u00a7bplentifins\u00a7r through a spyglass in their home waters."
+				""
+				"Craft a spyglass. Find the shoal. Just watch."
+			]
+			id: "000000000000011E"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"0000000000000102"
+			]
+			tasks: [
+				{
+					id: "000000000000011C"
+					type: "advancement"
+					advancement: "fishofthieves:spyglass_at_plentifins"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000011D"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Catch Every Common Fish"
+			x: -3.5d
+			y: 3.0d
+			subtitle: "Fish of Thieves"
+			description: [
+				"Fish of Thieves hides dozens of species with rare \u00a7btrophy variants\u00a7r. The mod itself tracks your collection through its advancement line."
+				""
+				"Complete the first collector's tier: catch one of each common species."
+			]
+			id: "0000000000000122"
+			optional: true
+			dependencies: [
+				"0000000000000107"
+			]
+			tasks: [
+				{
+					id: "000000000000011F"
+					type: "advancement"
+					advancement: "fishofthieves:fish_collectors"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000120"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "0000000000000121"
+					type: "xp"
+					xp: 300
+				}
+			]
+		}
+		{
+			title: "Catch Every Fish. All of Them."
+			x: -3.5d
+			y: 6.0d
+			subtitle: "The completionist's sea"
+			description: [
+				"The final collector's tier: every species, every rarity. The sea has nothing left to hide from you."
+				""
+				"Finish what the Creed started."
+			]
+			id: "000000000000012C"
+			shape: "star"
+			optional: true
+			dependencies: [
+				"0000000000000127"
+			]
+			tasks: [
+				{
+					id: "0000000000000128"
+					type: "advancement"
+					advancement: "fishofthieves:master_fish_collectors"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000129"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "000000000000012A"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "000000000000012B"
+					type: "xp"
+					xp: 1000
+				}
+			]
+		}
+		{
+			title: "Catch These Five Specific Fish"
+			x: -5.0d
+			y: 3.0d
+			subtitle: "Five waters, five fish"
+			description: [
+				"Over thirty species swim these waters and the census does not fill itself."
+				""
+				"Catch all five: a \u00a7brainbow trout\u00a7r (rivers), a \u00a7bbluegill\u00a7r (ponds), a \u00a7bcatfish\u00a7r (murky water), a \u00a7btuna\u00a7r (open ocean), and a \u00a7bpiranha\u00a7r (carefully)."
+			]
+			id: "0000000000000134"
+			dependencies: [
+				"0000000000000107"
+			]
+			tasks: [
+				{
+					id: "000000000000012D"
+					type: "item"
+					item: "aquaculture:rainbow_trout"
+				}
+				{
+					id: "000000000000012E"
+					type: "item"
+					item: "aquaculture:bluegill"
+				}
+				{
+					id: "000000000000012F"
+					type: "item"
+					item: "aquaculture:catfish"
+				}
+				{
+					id: "0000000000000130"
+					type: "item"
+					item: "aquaculture:tuna"
+				}
+				{
+					id: "0000000000000131"
+					type: "item"
+					item: "aquaculture:piranha"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000132"
+					type: "random"
+					table_id: 11L
+				}
+				{
+					id: "0000000000000133"
+					type: "xp"
+					xp: 300
+				}
+			]
+		}
+		{
+			title: "Land an Arapaima (Good Luck)"
+			x: -5.0d
+			y: 4.5d
+			subtitle: "The one that doesn't get away"
+			description: [
+				"The \u00a7barapaima\u00a7r: three meters of armored river fish, older than most dinosaurs and less impressed by you."
+				""
+				"Land one. Your rod will remember."
+			]
+			id: "0000000000000139"
+			shape: "star"
+			dependencies: [
+				"0000000000000134"
+			]
+			tasks: [
+				{
+					id: "0000000000000135"
+					type: "item"
+					item: "aquaculture:arapaima"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000136"
+					type: "random"
+					table_id: 11L
+				}
+				{
+					id: "0000000000000137"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "0000000000000138"
+					type: "xp"
+					xp: 400
+				}
+			]
+		}
+		{
+			title: "Catch a Stormfish in a Storm"
+			x: -5.0d
+			y: 1.5d
+			subtitle: "Weather-locked"
+			description: [
+				"Fish of Thieves' rarest swim with conditions: \u00a7bstormfish\u00a7r ride the thunder, \u00a7bwreckers\u00a7r haunt shipwrecks, \u00a7bdevilfish\u00a7r lurk where light gives up."
+				""
+				"Catch a stormfish during a thunderstorm. Yes, outside. Yes, now."
+			]
+			id: "000000000000013D"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"0000000000000107"
+			]
+			tasks: [
+				{
+					id: "000000000000013A"
+					type: "item"
+					item: "fishofthieves:stormfish"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000013B"
+					type: "random"
+					table_id: 11L
+				}
+				{
+					id: "000000000000013C"
+					type: "xp"
+					xp: 350
+				}
+			]
+		}
+		{
+			title: "Forge the Neptunium Helmet"
+			x: 0.0d
+			y: 7.3d
+			subtitle: "The deep, uniformed"
+			description: [
+				"Beyond the ingot lies the wardrobe: \u00a7bneptunium armor\u00a7r breathes underwater the way you breathe air."
+				""
+				"Forge any neptunium armor piece and the ocean stops being a border."
+			]
+			id: "0000000000000141"
+			shape: "star"
+			optional: true
+			dependencies: [
+				"0000000000000113"
+			]
+			tasks: [
+				{
+					id: "000000000000013E"
+					type: "item"
+					item: "aquaculture:neptunium_helmet"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000013F"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000140"
+					type: "xp"
+					xp: 600
+				}
+			]
+		}
+		{
+			title: "Catch the Legendary Fish"
+			x: -3.5d
+			y: 4.5d
+			subtitle: "The lies were true"
+			description: [
+				"Between collector and master lies the \u00a76legendary tier\u00a7r: the fish sailors lie about, caught and catalogued."
+			]
+			id: "0000000000000127"
+			optional: true
+			dependencies: [
+				"0000000000000122"
+			]
+			tasks: [
+				{
+					id: "0000000000000123"
+					type: "advancement"
+					advancement: "fishofthieves:legendary_fish_collectors"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000124"
+					type: "random"
+					table_id: 11L
+				}
+				{
+					id: "0000000000000125"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "0000000000000126"
+					type: "xp"
+					xp: 500
+				}
+			]
+		}
+		{
+			title: "Get Your Catch Struck by Lightning"
+			x: -5.0d
+			y: 6.0d
+			subtitle: "Fried, divinely"
+			description: [
+				"Fish of Thieves keeps an advancement for the rarest weather event in angling: \u00a7blightning striking your catch\u00a7r."
+				""
+				"You cannot plan this. You can only fish in storms until the sky takes an interest."
+			]
+			id: "0000000000000145"
+			shape: "star"
+			optional: true
+			dependencies: [
+				"000000000000013D"
+			]
+			tasks: [
+				{
+					id: "0000000000000142"
+					type: "advancement"
+					advancement: "fishofthieves:lightning_straight_to_my_fish"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000143"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000144"
+					type: "xp"
+					xp: 750
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,34 @@
+{
+	id: "0000000000000006"
+	order_index: 5
+	loot_size: 1
+	title: "Runic Arsenal"
+	use_title: true
+	icon: "simplyswords:runic_katana"
+	rewards: [
+		{
+			item: "simplyswords:runic_katana"
+			weight: 1.0f
+		}
+		{
+			item: "simplyswords:runic_longsword"
+			weight: 1.0f
+		}
+		{
+			item: "simplyswords:runic_twinblade"
+			weight: 1.0f
+		}
+		{
+			item: "simplyswords:runic_glaive"
+			weight: 1.0f
+		}
+		{
+			item: "simplyswords:runic_greataxe"
+			weight: 1.0f
+		}
+		{
+			item: "simplybows:echo_bow"
+			weight: 1.0f
+		}
+	]
+}

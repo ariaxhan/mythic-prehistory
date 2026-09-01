@@ -1,0 +1,1114 @@
+{
+	id: "0000000000000205"
+	group: ""
+	order_index: 6
+	filename: "wandering_the_wilds"
+	title: "Wandering the Wilds"
+	icon: "explorerscompass:explorerscompass"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	images: []
+	quests: [
+		{
+			title: "Go Outside and Actually Look"
+			x: 0.0d
+			y: 0.0d
+			subtitle: "Terralith + Tectonic + Structory + Dungeons and Taverns"
+			description: [
+				"Terralith and Tectonic gave this world nearly a hundred new biomes; Structory and Dungeons and Taverns scattered ruins, taverns, and dungeons through all of it."
+				""
+				"This chapter completes itself as you \u00a7bstand in places\u00a7r. Go be somewhere."
+			]
+			id: "0000000000000188"
+			shape: "rsquare"
+			size: 1.5d
+			tasks: [
+				{
+					id: "0000000000000185"
+					type: "advancement"
+					advancement: "minecraft:adventure/adventuring_time"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000186"
+					type: "item"
+					item: {
+						id: "minecraft:torch"
+						Count: 32b
+					}
+				}
+				{
+					id: "0000000000000187"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+		{
+			title: "Craft the Explorer's Compass"
+			x: 0.0d
+			y: 1.8d
+			subtitle: "Explorer's Compass"
+			description: [
+				"The \u00a7eExplorer's Compass\u00a7r locates any structure by name. Craft it and the rest of this chapter stops being luck."
+				""
+				"This quest also completes the moment you visit ANY of the marked places below, so wander boldly."
+			]
+			id: "000000000000018C"
+			dependencies: [
+				"0000000000000188"
+			]
+			tasks: [
+				{
+					id: "0000000000000189"
+					type: "item"
+					item: "explorerscompass:explorerscompass"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000018A"
+					type: "choice"
+					table_id: 9L
+				}
+				{
+					id: "000000000000018B"
+					type: "xp"
+					xp: 150
+				}
+			]
+		}
+		{
+			title: "The Amethyst Rainforest"
+			x: -3.0d
+			y: 2.2d
+			subtitle: "Biome hunt I"
+			description: [
+				"A jungle grown over amethyst geodes: purple light under green canopy. One of Terralith's showpieces."
+				""
+				"Stand in it."
+			]
+			id: "000000000000018F"
+			shape: "circle"
+			dependencies: [
+				"0000000000000188"
+			]
+			tasks: [
+				{
+					id: "000000000000018D"
+					type: "biome"
+					biome: "terralith:amethyst_rainforest"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000018E"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "The Glacial Chasm"
+			x: -3.0d
+			y: 3.7d
+			subtitle: "Biome hunt II"
+			description: [
+				"A crack in the world filled with blue ice, deep enough to swallow your render distance. Bring warm clothes; the Survival Overhaul is watching the thermometer."
+				""
+				"Stand at the bottom."
+			]
+			id: "0000000000000192"
+			shape: "circle"
+			dependencies: [
+				"000000000000018F"
+			]
+			tasks: [
+				{
+					id: "0000000000000190"
+					type: "biome"
+					biome: "terralith:glacial_chasm"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000191"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "The Skylands"
+			x: -3.0d
+			y: 5.2d
+			subtitle: "Biome hunt III"
+			description: [
+				"Islands in the sky, no strings attached. Terralith's crown jewel; your quetzalcoatlus or your wings finally earn their keep."
+				""
+				"Set foot on a floating island."
+			]
+			id: "0000000000000196"
+			shape: "star"
+			dependencies: [
+				"0000000000000192"
+			]
+			tasks: [
+				{
+					id: "0000000000000193"
+					type: "biome"
+					biome: "terralith:skylands"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000194"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000195"
+					type: "xp"
+					xp: 400
+				}
+			]
+		}
+		{
+			title: "Find a Tavern"
+			x: 3.0d
+			y: 2.2d
+			subtitle: "Structure hunt I"
+			description: [
+				"Dungeons and Taverns builds actual \u00a7etaverns\u00a7r into the world: hearths, beds, cellars, and the occasional bard-shaped disappointment."
+				""
+				"Find one. Sit a while. Check the cellar."
+			]
+			id: "000000000000019A"
+			shape: "circle"
+			dependencies: [
+				"0000000000000188"
+			]
+			tasks: [
+				{
+					id: "0000000000000197"
+					type: "advancement"
+					advancement: "nova_structures:adventure/find_tavern"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000198"
+					type: "random"
+					table_id: 1L
+				}
+				{
+					id: "0000000000000199"
+					type: "xp"
+					xp: 150
+				}
+			]
+		}
+		{
+			title: "Loot an Undead Crypt"
+			x: 3.0d
+			y: 3.7d
+			subtitle: "Structure hunt II"
+			description: [
+				"The \u00a7cundead crypts\u00a7r and \u00a7ccreeping crypts\u00a7r hold the loot this book keeps promising: runic weapons, trinkets, the good chests."
+				""
+				"\u00a7b/sethome\u00a7r before you descend. Tradition."
+			]
+			id: "000000000000019E"
+			shape: "circle"
+			dependencies: [
+				"000000000000019A"
+			]
+			tasks: [
+				{
+					id: "000000000000019B"
+					type: "structure"
+					structure: "nova_structures:undead_crypt"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000019C"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "000000000000019D"
+					type: "xp"
+					xp: 300
+				}
+			]
+		}
+		{
+			title: "Walk Through an Old Manor"
+			x: 3.0d
+			y: 5.2d
+			subtitle: "Structure hunt III"
+			description: [
+				"Structory's ruins: manors, chapels, firetowers, graveyards, camps abandoned mid-breakfast. History is lying around in pieces."
+				""
+				"Find an old manor and walk its halls."
+			]
+			id: "00000000000001A1"
+			shape: "circle"
+			dependencies: [
+				"000000000000019E"
+			]
+			tasks: [
+				{
+					id: "000000000000019F"
+					type: "structure"
+					structure: "structory:old_manor"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001A0"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Link Two Gateways"
+			x: 0.0d
+			y: 3.6d
+			subtitle: "Immersive Gateways"
+			description: [
+				"\u00a7dImmersive Gateways\u00a7r are craftable portals: link two, step through, arrive. For the places waystones can't go: your mine, your fishing lake, your dragon aviary."
+				""
+				"Build a linked pair."
+			]
+			id: "00000000000001A5"
+			dependencies: [
+				"000000000000018C"
+			]
+			tasks: [
+				{
+					id: "00000000000001A2"
+					type: "checkmark"
+					title: "Build and link an Immersive Gateway pair"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001A3"
+					type: "item"
+					item: {
+						id: "minecraft:ender_pearl"
+						Count: 4b
+					}
+				}
+				{
+					id: "00000000000001A4"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Wagon or Zipline: Pick One"
+			x: 0.0d
+			y: 5.2d
+			subtitle: "Trotting Wagons + Ziplines"
+			description: [
+				"Two ways to move like a legend: \u00a7eTrotting Wagons\u00a7r haul your camp behind a horse, \u00a7eZiplines\u00a7r cross Terralith canyons in style."
+				""
+				"Craft either one."
+			]
+			id: "00000000000001AA"
+			dependencies: [
+				"00000000000001A5"
+			]
+			tasks: [
+				{
+					id: "00000000000001A6"
+					type: "checkmark"
+					title: "Craft a wagon or a zipline"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001A7"
+					type: "item"
+					item: {
+						id: "trotting_wagons:horse_whip"
+						Count: 1b
+					}
+				}
+				{
+					id: "00000000000001A8"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000001A9"
+					type: "xp"
+					xp: 300
+				}
+			]
+		}
+		{
+			title: "Find a Capital City"
+			x: -2.0d
+			y: 6.4d
+			subtitle: "Luki's Grand Capitals + Towns and Towers"
+			description: [
+				"Somewhere out there stands a \u00a76capital\u00a7r: Luki's city-sized villages, with named citizens (yes, they all have names now), armed guards, and more professions than vanilla ever dreamed."
+				""
+				"Walk into any village and this completes; keep walking until you find a capital, because the difference is the point."
+			]
+			id: "00000000000001AE"
+			dependencies: [
+				"00000000000001AA"
+			]
+			tasks: [
+				{
+					id: "00000000000001AB"
+					type: "structure"
+					structure: "#minecraft:village"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001AC"
+					type: "item"
+					item: {
+						id: "minecraft:emerald"
+						Count: 16b
+					}
+				}
+				{
+					id: "00000000000001AD"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Stand in a Stronghold"
+			x: -3.5d
+			y: 5.2d
+			subtitle: "Luki's Strongholds"
+			description: [
+				"Luki rebuilt the \u00a75strongholds\u00a7r too: what was a maze of stone brick is now a buried fortress worth exploring for its own sake."
+				""
+				"Follow an eye of ender down and stand in one."
+			]
+			id: "00000000000001B2"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"000000000000018C"
+			]
+			tasks: [
+				{
+					id: "00000000000001AF"
+					type: "structure"
+					structure: "minecraft:stronghold"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001B0"
+					type: "item"
+					item: {
+						id: "minecraft:ender_eye"
+						Count: 2b
+					}
+				}
+				{
+					id: "00000000000001B1"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Raid a Woodland Mansion"
+			x: 3.5d
+			y: 5.2d
+			subtitle: "Luki's Woodland Mansions"
+			description: [
+				"Woodland mansions used to be a myth you'd never see. We fixed that: Luki's rebuilt them, and they generate close enough to actually visit."
+				""
+				"Find one. Clear it or rob it; the evokers won't respect either choice."
+			]
+			id: "00000000000001B6"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"000000000000018C"
+			]
+			tasks: [
+				{
+					id: "00000000000001B3"
+					type: "structure"
+					structure: "minecraft:mansion"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001B4"
+					type: "item"
+					item: {
+						id: "minecraft:totem_of_undying"
+						Count: 1b
+					}
+				}
+				{
+					id: "00000000000001B5"
+					type: "random"
+					table_id: 3L
+				}
+			]
+		}
+		{
+			title: "Tug + Barge: Start Shipping"
+			x: 2.0d
+			y: 6.4d
+			subtitle: "Little Logistics"
+			description: [
+				"\u00a7eLittle Logistics\u00a7r runs working tugboats and locomotives: barges for cargo, fishing, even chunk-loading, all linked by springs and routes."
+				""
+				"Build a tug and put a barge behind it. Your rivers become supply lines."
+			]
+			id: "00000000000001BB"
+			dependencies: [
+				"00000000000001AA"
+			]
+			tasks: [
+				{
+					id: "00000000000001B7"
+					type: "item"
+					item: "littlelogistics:tug"
+				}
+				{
+					id: "00000000000001B8"
+					type: "item"
+					item: "littlelogistics:barge"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001B9"
+					type: "item"
+					item: {
+						id: "littlelogistics:spring"
+						Count: 4b
+					}
+				}
+				{
+					id: "00000000000001BA"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Build an Airship"
+			x: 0.0d
+			y: 7.8d
+			subtitle: "Immersive Aircraft"
+			description: [
+				"\u00a7eImmersive Aircraft\u00a7r: wooden airships, gyrodynes, biplanes. Hull, engine, sail, propeller; assembled like a myth, flown like a machine."
+				""
+				"Build the parts and take to the air. The Skylands quest suddenly has an obvious answer."
+			]
+			id: "00000000000001C1"
+			shape: "star"
+			dependencies: [
+				"00000000000001AE"
+				"00000000000001BB"
+			]
+			tasks: [
+				{
+					id: "00000000000001BC"
+					type: "item"
+					item: "immersive_aircraft:hull"
+				}
+				{
+					id: "00000000000001BD"
+					type: "item"
+					item: "immersive_aircraft:engine"
+				}
+				{
+					id: "00000000000001BE"
+					type: "item"
+					item: "immersive_aircraft:propeller"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001BF"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000001C0"
+					type: "xp"
+					xp: 400
+				}
+			]
+		}
+		{
+			title: "Enter the Nether"
+			x: 0.0d
+			y: 9.2d
+			subtitle: "Every myth has a basement"
+			description: [
+				"Hades keeps a realm here too, and Dungeons and Taverns furnished it: nether keeps, piglin camps, skeleton towers in four flavors of fortress."
+				""
+				"Enter the Nether. Come back with your shadow still attached."
+			]
+			id: "00000000000001C5"
+			dependencies: [
+				"00000000000001C1"
+			]
+			tasks: [
+				{
+					id: "00000000000001C2"
+					type: "dimension"
+					dimension: "minecraft:the_nether"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001C3"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000001C4"
+					type: "xp"
+					xp: 250
+				}
+			]
+		}
+		{
+			title: "The Witch's Villa"
+			x: 3.0d
+			y: 6.7d
+			subtitle: "Structure hunt IV"
+			description: [
+				"Dungeons and Taverns' strangest landmark: a witch's countryside villa. Herbalism, hostility, and excellent interior design."
+				""
+				"Find it. The mod's own advancement confirms the visit."
+			]
+			id: "00000000000001C8"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"00000000000001A1"
+			]
+			tasks: [
+				{
+					id: "00000000000001C6"
+					type: "advancement"
+					advancement: "nova_structures:adventure/find_witch_villa"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001C7"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Find a Nether Keep"
+			x: 0.0d
+			y: 10.7d
+			subtitle: "The underworld, furnished"
+			description: [
+				"The Nether keeps: fortresses Dungeons and Taverns built for whatever holds dominion down there."
+				""
+				"Find a nether keep and come back with the story."
+			]
+			id: "00000000000001CC"
+			shape: "star"
+			optional: true
+			dependencies: [
+				"00000000000001C5"
+			]
+			tasks: [
+				{
+					id: "00000000000001C9"
+					type: "advancement"
+					advancement: "nova_structures:nether/find_keep"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001CA"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000001CB"
+					type: "xp"
+					xp: 400
+				}
+			]
+		}
+		{
+			title: "Portal to the Lost Cities"
+			x: -2.0d
+			y: 9.2d
+			subtitle: "The Lost Cities"
+			description: [
+				"Before the flood, before the myths, there was a \u00a7bcivilization\u00a7r. Its cities still stand, empty, in a dimension the gods sealed off."
+				""
+				"The key: build a \u00a75nether portal frame\u00a7r from obsidian, but set \u00a7dcrying obsidian\u00a7r in all four corners (rob the ruined portals for it). Light it. Step through."
+				""
+				"Inside: skyscrapers, highways, and buildings full of chests. Lootr gives every explorer their own haul, and the loot cases in there kept their secrets. Bring food, torches, and a way to say goodbye."
+			]
+			id: "00000000000001D0"
+			shape: "star"
+			dependencies: [
+				"00000000000001C5"
+			]
+			tasks: [
+				{
+					id: "00000000000001CD"
+					type: "dimension"
+					dimension: "lostcities:lostcity"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001CE"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000001CF"
+					type: "xp"
+					xp: 600
+				}
+			]
+		}
+		{
+			title: "Retake a Miner Outpost"
+			x: 3.0d
+			y: 8.3d
+			subtitle: "Reconquista"
+			description: [
+				"The badlands miner outposts fell to illagers long ago. Dungeons and Taverns tracks their reconquest."
+				""
+				"Take one back."
+			]
+			id: "00000000000001D4"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"000000000000019E"
+			]
+			tasks: [
+				{
+					id: "00000000000001D1"
+					type: "advancement"
+					advancement: "nova_structures:adventure/conquer_miner_outpost"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001D2"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000001D3"
+					type: "xp"
+					xp: 400
+				}
+			]
+		}
+		{
+			title: "Find Every Illager Base"
+			x: 3.0d
+			y: 9.8d
+			subtitle: "Know your enemy's address"
+			description: [
+				"Manor, hideout, outpost, villa: every illager holding on the map, found and marked. The mod keeps the atlas; you do the walking."
+				""
+				"Complete the full illager survey."
+			]
+			id: "00000000000001D9"
+			shape: "star"
+			optional: true
+			dependencies: [
+				"00000000000001D4"
+			]
+			tasks: [
+				{
+					id: "00000000000001D5"
+					type: "advancement"
+					advancement: "nova_structures:adventure/find_all_illager_structures"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001D6"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000001D7"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000001D8"
+					type: "xp"
+					xp: 1000
+				}
+			]
+		}
+		{
+			title: "The First Thousand Paces"
+			x: 6.0d
+			y: 0.0d
+			subtitle: "Step one of many"
+			description: [
+				"The book counts your steps now. Walk one kilometer of this world; any direction, any reason."
+				""
+				"It adds up faster than you think. Everything in this branch tracks automatically."
+			]
+			id: "00000000000001DE"
+			shape: "circle"
+			tasks: [
+				{
+					id: "00000000000001DA"
+					type: "stat"
+					stat: "minecraft:walk_one_cm"
+					value: 100000
+					title: "Walk 1 km"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001DB"
+					type: "random"
+					table_id: 1L
+				}
+				{
+					id: "00000000000001DC"
+					type: "random"
+					table_id: 10L
+				}
+				{
+					id: "00000000000001DD"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Ten-League Boots"
+			x: 6.0d
+			y: 1.5d
+			subtitle: "The land knows you now"
+			description: [
+				"Ten kilometers on foot. Past the capitals, through the taiga where the mammoths argue, over at least one mountain you did not need to climb."
+			]
+			id: "00000000000001E4"
+			shape: "circle"
+			dependencies: [
+				"00000000000001DE"
+			]
+			tasks: [
+				{
+					id: "00000000000001DF"
+					type: "stat"
+					stat: "minecraft:walk_one_cm"
+					value: 1000000
+					title: "Walk 10 km"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001E0"
+					type: "choice"
+					table_id: 9L
+				}
+				{
+					id: "00000000000001E1"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000001E2"
+					type: "random"
+					table_id: 10L
+				}
+				{
+					id: "00000000000001E3"
+					type: "xp"
+					xp: 300
+				}
+			]
+		}
+		{
+			title: "Pilgrim of the Broken World"
+			x: 6.0d
+			y: 3.0d
+			subtitle: "The long pilgrimage"
+			description: [
+				"Fifty kilometers walked. At this distance you have seen biomes without names, structures the book never mentioned, and at least one sunset you stopped for."
+				""
+				"This is the walking crown. Wear it out."
+			]
+			id: "00000000000001EC"
+			shape: "star"
+			dependencies: [
+				"00000000000001E4"
+			]
+			tasks: [
+				{
+					id: "00000000000001E5"
+					type: "stat"
+					stat: "minecraft:walk_one_cm"
+					value: 5000000
+					title: "Walk 50 km"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001E6"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000001E7"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "00000000000001E8"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000001E9"
+					type: "random"
+					table_id: 11L
+				}
+				{
+					id: "00000000000001EA"
+					type: "random"
+					table_id: 10L
+				}
+				{
+					id: "00000000000001EB"
+					type: "xp"
+					xp: 1000
+				}
+			]
+		}
+		{
+			title: "Riverblood"
+			x: 7.5d
+			y: 1.5d
+			subtitle: "The old roads"
+			description: [
+				"Five kilometers by boat. Rivers are the old roads; follow one until it forgets where it was going."
+			]
+			id: "00000000000001F2"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"00000000000001DE"
+			]
+			tasks: [
+				{
+					id: "00000000000001ED"
+					type: "stat"
+					stat: "minecraft:boat_one_cm"
+					value: 500000
+					title: "Travel 5 km by boat"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001EE"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000001EF"
+					type: "random"
+					table_id: 11L
+				}
+				{
+					id: "00000000000001F0"
+					type: "random"
+					table_id: 10L
+				}
+				{
+					id: "00000000000001F1"
+					type: "xp"
+					xp: 250
+				}
+			]
+		}
+		{
+			title: "Cavalry Heart"
+			x: 4.5d
+			y: 1.5d
+			subtitle: "Ride"
+			description: [
+				"Five kilometers in the saddle: horse, quetzal, hippocampus; the book does not judge your steed."
+				""
+				"The whip from Trotting Wagons helps. So does not falling off."
+			]
+			id: "00000000000001F8"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"00000000000001DE"
+			]
+			tasks: [
+				{
+					id: "00000000000001F3"
+					type: "stat"
+					stat: "minecraft:horse_one_cm"
+					value: 500000
+					title: "Travel 5 km mounted"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001F4"
+					type: "item"
+					item: {
+						id: "minecraft:golden_carrot"
+						Count: 8b
+					}
+				}
+				{
+					id: "00000000000001F5"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000001F6"
+					type: "random"
+					table_id: 12L
+				}
+				{
+					id: "00000000000001F7"
+					type: "random"
+					table_id: 10L
+				}
+			]
+		}
+		{
+			title: "The Deep Breath"
+			x: 7.5d
+			y: 3.0d
+			subtitle: "With the fishes, briefly"
+			description: [
+				"One kilometer swum. The plesiosaurs will be curious. Swim faster than their curiosity."
+			]
+			id: "00000000000001FE"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"00000000000001F2"
+			]
+			tasks: [
+				{
+					id: "00000000000001F9"
+					type: "stat"
+					stat: "minecraft:swim_one_cm"
+					value: 100000
+					title: "Swim 1 km"
+				}
+			]
+			rewards: [
+				{
+					id: "00000000000001FA"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "00000000000001FB"
+					type: "random"
+					table_id: 11L
+				}
+				{
+					id: "00000000000001FC"
+					type: "random"
+					table_id: 11L
+				}
+				{
+					id: "00000000000001FD"
+					type: "xp"
+					xp: 250
+				}
+			]
+		}
+		{
+			title: "Up, Always Up"
+			x: 4.5d
+			y: 3.0d
+			subtitle: "The vertical world"
+			description: [
+				"Climb five hundred meters of ladders and vines. Terralith built the cliffs; somebody has to scale them."
+			]
+			id: "0000000000000204"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"00000000000001F8"
+			]
+			tasks: [
+				{
+					id: "00000000000001FF"
+					type: "stat"
+					stat: "minecraft:climb_one_cm"
+					value: 50000
+					title: "Climb 500 m"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000200"
+					type: "item"
+					item: {
+						id: "minecraft:ladder"
+						Count: 32b
+					}
+				}
+				{
+					id: "0000000000000201"
+					type: "random"
+					table_id: 10L
+				}
+				{
+					id: "0000000000000202"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "0000000000000203"
+					type: "random"
+					table_id: 1L
+				}
+			]
+		}
+	]
+}

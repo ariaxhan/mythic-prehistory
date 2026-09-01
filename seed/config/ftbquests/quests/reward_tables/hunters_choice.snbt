@@ -1,0 +1,36 @@
+{
+	id: "0000000000000005"
+	order_index: 4
+	loot_size: 1
+	title: "Hunters Choice"
+	use_title: true
+	icon: "tameablebeasts:bug_sword"
+	rewards: [
+		{
+			item: "tameablebeasts:metal_shield"
+			weight: 1.0f
+		}
+		{
+			item: "tameablebeasts:bug_sword"
+			weight: 1.0f
+		}
+		{
+			item: {
+				id: "tameablebeasts:bird_bait_arrow"
+				Count: 8b
+			}
+			weight: 1.0f
+		}
+		{
+			item: {
+				id: "tameablebeasts:big_bird_bait"
+				Count: 4b
+			}
+			weight: 1.0f
+		}
+		{
+			item: "rpg_companions_tiny_dragons:dragon_trainers_staff"
+			weight: 1.0f
+		}
+	]
+}

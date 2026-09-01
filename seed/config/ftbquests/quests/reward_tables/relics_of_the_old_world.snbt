@@ -1,0 +1,134 @@
+{
+	id: "0000000000000002"
+	order_index: 1
+	loot_size: 2
+	title: "Relics of the Old World"
+	use_title: true
+	icon: "shineals_prehistoric_expansion:ammonite_shell"
+	rewards: [
+		{
+			item: {
+				id: "minecraft:diamond"
+				Count: 4b
+			}
+			weight: 15.0f
+		}
+		{
+			item: "aquaculture:redstone_hook"
+			weight: 10.0f
+		}
+		{
+			item: "aquaculture:note_hook"
+			weight: 10.0f
+		}
+		{
+			item: {
+				id: "shineals_prehistoric_expansion:ammonite_shell"
+				Count: 2b
+			}
+			weight: 10.0f
+		}
+		{
+			item: "losttrinkets:luck_coin"
+			weight: 8.0f
+		}
+		{
+			item: "losttrinkets:miners_pick"
+			weight: 8.0f
+		}
+		{
+			item: "losttrinkets:turtle_shell"
+			weight: 8.0f
+		}
+		{
+			item: "losttrinkets:minds_eye"
+			weight: 6.0f
+		}
+		{
+			item: {
+				id: "minecraft:slime_ball"
+				Count: 4b
+			}
+			weight: 8.0f
+		}
+		{
+			item: {
+				id: "species:ancient_pinecone"
+				Count: 2b
+			}
+			weight: 6.0f
+		}
+		{
+			item: {
+				id: "rpg_companions_tiny_dragons:dragon_fireball_item"
+				Count: 2b
+			}
+			weight: 6.0f
+		}
+		{
+			item: "simplyswords:runic_rapier"
+			weight: 5.0f
+		}
+		{
+			item: "simplyswords:runic_spear"
+			weight: 5.0f
+		}
+		{
+			item: {
+				id: "aquaculture:neptunium_nugget"
+				Count: 2b
+			}
+			weight: 4.0f
+		}
+		{
+			item: "minecraft:netherite_scrap"
+			weight: 4.0f
+		}
+		{
+			item: "tameablebeasts:beetle_gem"
+			weight: 4.0f
+		}
+		{
+			item: "losttrinkets:blaze_heart"
+			weight: 3.0f
+		}
+		{
+			item: "aquaculture:nether_star_hook"
+			weight: 1.0f
+		}
+		{
+			item: "recased:weapon_loot_case"
+			weight: 8.0f
+		}
+		{
+			item: "recased:armor_loot_case"
+			weight: 8.0f
+		}
+		{
+			item: "recased:enchantment_loot_case"
+			weight: 6.0f
+		}
+		{
+			item: "toms_storage:ts.crafting_terminal"
+			weight: 4.0f
+		}
+		{
+			item: {
+				id: "minecraft:ender_pearl"
+				Count: 4b
+			}
+			weight: 8.0f
+		}
+		{
+			item: "waystones:warp_scroll"
+			weight: 5.0f
+		}
+		{
+			item: {
+				id: "minecraft:experience_bottle"
+				Count: 8b
+			}
+			weight: 8.0f
+		}
+	]
+}

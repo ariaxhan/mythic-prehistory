@@ -1,0 +1,396 @@
+{
+	id: "0000000000000285"
+	group: ""
+	order_index: 9
+	filename: "feats_of_legend"
+	title: "Feats of Legend"
+	icon: "minecraft:totem_of_undying"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	images: []
+	quests: [
+		{
+			title: "Deeds, Not Deadlines"
+			x: 0.0d
+			y: 0.0d
+			subtitle: "The trophy wall"
+			description: [
+				"This chapter has no path and no order. It is a wall of \u00a76feats\u00a7r: things heroes did once, badly, and got remembered for anyway."
+				""
+				"Every one of them completes itself the moment you live it. Some you will earn on purpose. The best ones will happen TO you."
+			]
+			id: "000000000000025C"
+			shape: "star"
+			size: 1.5d
+			tasks: [
+				{
+					id: "000000000000025A"
+					type: "checkmark"
+					title: "Read the wall"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000025B"
+					type: "random"
+					table_id: 10L
+				}
+			]
+		}
+		{
+			title: "Build Your Own Talos"
+			x: -3.0d
+			y: 1.5d
+			subtitle: "The bronze age, remade"
+			description: [
+				"Crete had a bronze giant that patrolled its shores. You have iron blocks, a pumpkin, and ambition."
+				""
+				"Summon an iron golem. Congratulations: you are now a minor god of craftsmanship."
+			]
+			id: "0000000000000260"
+			dependencies: [
+				"000000000000025C"
+			]
+			tasks: [
+				{
+					id: "000000000000025D"
+					type: "advancement"
+					advancement: "minecraft:adventure/summon_iron_golem"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000025E"
+					type: "item"
+					item: {
+						id: "minecraft:iron_block"
+						Count: 4b
+					}
+				}
+				{
+					id: "000000000000025F"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Break a Raid, Become the Hero"
+			x: -1.5d
+			y: 2.2d
+			subtitle: "They will remember you"
+			description: [
+				"A raid bell rings in one of Luki's capitals. The guards will fight. The villagers will panic beautifully. And you decide how the story ends."
+				""
+				"Break a raid and earn Hero of the Village; with named citizens, it lands differently."
+			]
+			id: "0000000000000264"
+			shape: "star"
+			dependencies: [
+				"000000000000025C"
+			]
+			tasks: [
+				{
+					id: "0000000000000261"
+					type: "advancement"
+					advancement: "minecraft:adventure/hero_of_the_village"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000262"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000263"
+					type: "xp"
+					xp: 500
+				}
+			]
+		}
+		{
+			title: "Survive Death via Totem"
+			x: 0.0d
+			y: 2.9d
+			subtitle: "Postponed, not cancelled"
+			description: [
+				"A totem of undying burns your death and hands the receipt to the underworld."
+				""
+				"Die with one in hand. The mansion keeps them; so does your starter luck."
+			]
+			id: "0000000000000268"
+			dependencies: [
+				"000000000000025C"
+			]
+			tasks: [
+				{
+					id: "0000000000000265"
+					type: "advancement"
+					advancement: "minecraft:adventure/totem_of_undying"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000266"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "0000000000000267"
+					type: "xp"
+					xp: 400
+				}
+			]
+		}
+		{
+			title: "Fall From Sky to Caves, Live"
+			x: 1.5d
+			y: 2.2d
+			subtitle: "Bring a bucket"
+			description: [
+				"Fall from the top of the world to the bottom of the caves and live. Terralith built the launch towers; a water bucket builds the landing."
+				""
+				"The original Icarus lacked preparation, not courage."
+			]
+			id: "000000000000026C"
+			shape: "star"
+			dependencies: [
+				"000000000000025C"
+			]
+			tasks: [
+				{
+					id: "0000000000000269"
+					type: "advancement"
+					advancement: "minecraft:adventure/fall_from_world_height"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000026A"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "000000000000026B"
+					type: "xp"
+					xp: 600
+				}
+			]
+		}
+		{
+			title: "Snipe a Skeleton From 50 Meters"
+			x: 3.0d
+			y: 1.5d
+			subtitle: "One arrow, one answer"
+			description: [
+				"Kill a skeleton from fifty meters. The huntress does not accept 'it was raining' as an excuse."
+			]
+			id: "0000000000000270"
+			dependencies: [
+				"000000000000025C"
+			]
+			tasks: [
+				{
+					id: "000000000000026D"
+					type: "advancement"
+					advancement: "minecraft:adventure/sniper_duel"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000026E"
+					type: "item"
+					item: {
+						id: "minecraft:spectral_arrow"
+						Count: 16b
+					}
+				}
+				{
+					id: "000000000000026F"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Kill a Ghast With Its Own Fireball"
+			x: -3.0d
+			y: 3.6d
+			subtitle: "Postage due"
+			description: [
+				"A ghast throws fire at you. Etiquette demands you throw it back."
+				""
+				"Kill a ghast with its own fireball. The underworld hates this trick."
+			]
+			id: "0000000000000274"
+			optional: true
+			dependencies: [
+				"000000000000025C"
+			]
+			tasks: [
+				{
+					id: "0000000000000271"
+					type: "advancement"
+					advancement: "minecraft:nether/return_to_sender"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000272"
+					type: "random"
+					table_id: 2L
+				}
+				{
+					id: "0000000000000273"
+					type: "xp"
+					xp: 400
+				}
+			]
+		}
+		{
+			title: "Jump 1,000 Times"
+			x: -1.5d
+			y: 4.3d
+			subtitle: "Up. Again."
+			description: [
+				"Jump one thousand times. Not for a reason. For the discipline."
+				""
+				"Tameable Beasts' grasshoppers approve of your journey."
+			]
+			id: "0000000000000279"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"000000000000025C"
+			]
+			tasks: [
+				{
+					id: "0000000000000275"
+					type: "stat"
+					stat: "minecraft:jump"
+					value: 1000
+					title: "Jump 1,000 times"
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000276"
+					type: "item"
+					item: {
+						id: "tameablebeasts:grasshopper_egg"
+						Count: 1b
+					}
+				}
+				{
+					id: "0000000000000277"
+					type: "random"
+					table_id: 10L
+				}
+				{
+					id: "0000000000000278"
+					type: "random"
+					table_id: 2L
+				}
+			]
+		}
+		{
+			title: "Sleep 15 Nights"
+			x: 1.5d
+			y: 4.3d
+			subtitle: "The soft feat"
+			description: [
+				"Sleep through fifteen nights. Heroes need rest; the seasons turn either way, and the calendar on your HUD keeps the score."
+			]
+			id: "000000000000027F"
+			shape: "circle"
+			optional: true
+			dependencies: [
+				"000000000000025C"
+			]
+			tasks: [
+				{
+					id: "000000000000027A"
+					type: "stat"
+					stat: "minecraft:sleep_in_bed"
+					value: 15
+					title: "Sleep 15 nights"
+				}
+			]
+			rewards: [
+				{
+					id: "000000000000027B"
+					type: "item"
+					item: {
+						id: "comforts:hammock_blue"
+						Count: 1b
+					}
+				}
+				{
+					id: "000000000000027C"
+					type: "random"
+					table_id: 10L
+				}
+				{
+					id: "000000000000027D"
+					type: "random"
+					table_id: 1L
+				}
+				{
+					id: "000000000000027E"
+					type: "random"
+					table_id: 10L
+				}
+			]
+		}
+		{
+			title: "Kill the Ender Dragon"
+			x: 0.0d
+			y: 5.6d
+			subtitle: "Where all packs end"
+			description: [
+				"Past the strongholds Luki rebuilt, through the End's rewritten sky (Nullscape saw to it), waits the oldest story in the game."
+				""
+				"Kill the ender dragon. After the Infernal Crown it will feel almost gentle; do it anyway, because a myth pack ends its myths properly."
+			]
+			id: "0000000000000284"
+			shape: "star"
+			size: 1.5d
+			dependencies: [
+				"0000000000000260"
+				"0000000000000268"
+			]
+			tasks: [
+				{
+					id: "0000000000000280"
+					type: "advancement"
+					advancement: "minecraft:end/kill_dragon"
+					criterion: ""
+				}
+			]
+			rewards: [
+				{
+					id: "0000000000000281"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000282"
+					type: "random"
+					table_id: 3L
+				}
+				{
+					id: "0000000000000283"
+					type: "xp"
+					xp: 2000
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,12 @@
+
+[enchantments]
+	#If true, shows Backpack enchantment descriptions
+	showEnchantmentDescriptions = true
+
+[rationing]
+	#Render rationing reserve directly on top of hunger instead of above it
+	rationingOverlayOnHunger = false
+
+[backpack]
+	#If true, reopening the inventory will reopen the backpack screen when it was previously open.
+	reopenBackpackWithInventory = true

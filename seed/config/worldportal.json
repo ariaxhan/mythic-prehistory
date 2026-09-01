@@ -1,0 +1,12 @@
+{
+    "portals": {
+        "mythic:lostcity": {
+            "frame_top_right": "minecraft:crying_obsidian",
+            "frame_top_left": "minecraft:crying_obsidian",
+            "frame_bottom_right": "minecraft:crying_obsidian",
+            "frame_bottom_left": "minecraft:crying_obsidian",
+            "mode": "worldportal:default",
+            "destination": "lostcities:lostcity"
+        }
+    }
+}

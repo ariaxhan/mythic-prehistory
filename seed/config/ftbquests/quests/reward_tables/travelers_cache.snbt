@@ -1,0 +1,126 @@
+{
+	id: "0000000000000001"
+	order_index: 0
+	loot_size: 2
+	title: "Travelers Cache"
+	use_title: true
+	icon: "minecraft:bundle"
+	rewards: [
+		{
+			item: {
+				id: "minecraft:bread"
+				Count: 8b
+			}
+			weight: 20.0f
+		}
+		{
+			item: {
+				id: "minecraft:torch"
+				Count: 24b
+			}
+			weight: 20.0f
+		}
+		{
+			item: {
+				id: "minecraft:arrow"
+				Count: 16b
+			}
+			weight: 15.0f
+		}
+		{
+			item: {
+				id: "minecraft:iron_ingot"
+				Count: 4b
+			}
+			weight: 15.0f
+		}
+		{
+			item: {
+				id: "aquaculture:worm"
+				Count: 6b
+			}
+			weight: 12.0f
+		}
+		{
+			item: {
+				id: "minecraft:experience_bottle"
+				Count: 4b
+			}
+			weight: 10.0f
+		}
+		{
+			item: "aquaculture:gold_hook"
+			weight: 8.0f
+		}
+		{
+			item: {
+				id: "waystones:warp_dust"
+				Count: 4b
+			}
+			weight: 8.0f
+		}
+		{
+			item: {
+				id: "shineals_prehistoric_expansion:juniper_berries"
+				Count: 12b
+			}
+			weight: 8.0f
+		}
+		{
+			item: {
+				id: "kaleidoscope_cookery:golden_salad"
+				Count: 2b
+			}
+			weight: 6.0f
+		}
+		{
+			item: "minecraft:golden_apple"
+			weight: 5.0f
+		}
+		{
+			item: {
+				id: "minecraft:diamond"
+				Count: 2b
+			}
+			weight: 4.0f
+		}
+		{
+			item: "losttrinkets:lunch_bag"
+			weight: 2.0f
+		}
+		{
+			item: "losttrinkets:horseshoe"
+			weight: 2.0f
+		}
+		{
+			item: "aquaculture:double_hook"
+			weight: 3.0f
+		}
+		{
+			item: "recased:food_loot_case"
+			weight: 6.0f
+		}
+		{
+			item: "recased:tool_loot_case"
+			weight: 5.0f
+		}
+		{
+			item: "waystones:warp_stone"
+			weight: 3.0f
+		}
+		{
+			item: {
+				id: "minecraft:emerald"
+				Count: 4b
+			}
+			weight: 10.0f
+		}
+		{
+			item: {
+				id: "kaleidoscope_cookery:spicy_chicken"
+				Count: 2b
+			}
+			weight: 5.0f
+		}
+	]
+}

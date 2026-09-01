@@ -1,0 +1,27 @@
+# Default config file that will be copied to world's serverconfig/ftbessentials.snbt location
+# Copy values you wish to override in here
+# Example:
+#
+# {
+# 	misc: {
+# 		enderchest: {
+# 			enabled: false
+# 		}
+# 	}
+# }
+
+# /rtp defaults to max_distance 25000, which throws a player up to 25k blocks
+# into terrain that has never been generated. On a heavily modded world
+# (Terralith + Tectonic + structure mods) that is a multi-thousand-chunk demand
+# in one burst, which stalls the server past the client's 30s connection
+# timeout and reads to the player as "connection lost". Capped to match the
+# Chunky pregen radius so every random teleport lands in terrain that already
+# exists on disk. Raise this only after pregenning further.
+{
+	teleportation: {
+		rtp: {
+			max_distance: 3000
+			min_distance: 500
+		}
+	}
+}

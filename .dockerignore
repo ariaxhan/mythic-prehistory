@@ -1,0 +1,20 @@
+# Unlike deceasedcraft/, the mod jars ARE the build context here: this is our
+# own pack, not a pinned upstream zip fetched inside the image. mods/ and seed/
+# must reach the builder, so there is deliberately NO blanket *.jar exclusion.
+.cache/
+.git/
+*.zip
+docs/
+scripts/*
+!scripts/download-expansion-mods.sh
+mpctl
+README.md
+*.md
+.env*
+CLIENT_ONLY.txt
+_meta/
+companion-mod/.gradle/
+companion-mod/.gradle-dist/
+companion-mod/build/
+companion-mod/run/
+companion-mod/run-data/
