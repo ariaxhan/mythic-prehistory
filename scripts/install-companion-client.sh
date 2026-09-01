@@ -4,7 +4,7 @@ set -euo pipefail
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 instance_dir="${PRISM_INSTANCE_DIR:-${HOME}/Library/Application Support/PrismLauncher/instances/Mythic Prehistory}"
 mods_dir="$instance_dir/minecraft/mods"
-jar_name="mythic-companions-1.2.0.jar"
+jar_name="mythic-companions-1.2.1.jar"
 source_jar="$repo_dir/companion-mod/build/libs/$jar_name"
 target_jar="$mods_dir/$jar_name"
 config_dir="$instance_dir/minecraft/config"

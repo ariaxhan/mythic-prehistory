@@ -61,7 +61,7 @@ is_client_only() {
     return 1
 }
 
-known_unmatched='^(ftb-essentials-forge-2001\.2\.4\.jar|ftb-library-forge-2001\.2\.13\.jar|ftb-quests-forge-2001\.4\.22\.jar|ftb-teams-forge-2001\.3\.2\.jar|pelagic_prehistory-20\.1\.3\.2\.jar|mythic-companions-1\.2\.0\.jar|macu_lib-forge-1\.0\.6-1\.20\.1-mythic1\.jar)$'
+known_unmatched='^(ftb-essentials-forge-2001\.2\.4\.jar|ftb-library-forge-2001\.2\.13\.jar|ftb-quests-forge-2001\.4\.22\.jar|ftb-teams-forge-2001\.3\.2\.jar|pelagic_prehistory-20\.1\.3\.2\.jar|mythic-companions-1\.2\.1\.jar|macu_lib-forge-1\.0\.6-1\.20\.1-mythic1\.jar)$'
 while IFS=$'\t' read -r sha1 filename jar; do
     if rg -l -F "filename = \"${filename}\"" "${build_dir}/mods/"*.pw.toml >/dev/null 2>&1; then
         continue

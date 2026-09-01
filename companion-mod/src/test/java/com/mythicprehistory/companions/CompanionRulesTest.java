@@ -71,7 +71,7 @@ class CompanionRulesTest {
     }
 
     @Test
-    void stayAndDefenseSuppressFollowing() {
+    void sittingAndDefenseSuppressFollowing() {
         assertTrue(CompanionRules.shouldFollow(false, false, 37.0D));
         assertFalse(CompanionRules.shouldFollow(true, false, 100.0D));
         assertFalse(CompanionRules.shouldFollow(false, true, 100.0D));

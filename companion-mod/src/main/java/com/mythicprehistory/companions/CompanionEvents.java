@@ -96,9 +96,14 @@ public final class CompanionEvents {
         if (player.isShiftKeyDown() && stack.isEmpty()) {
             boolean staying = CompanionData.toggleStaying(mob);
             mob.getNavigation().stop();
+            if (staying) {
+                CompanionData.clearDefenseTarget(mob);
+                mob.setTarget(null);
+                mob.setDeltaMovement(0.0D, 0.0D, 0.0D);
+            }
             player.displayClientMessage(
                 Component.translatable(
-                    staying ? "message.mythic_companions.staying" : "message.mythic_companions.following",
+                    staying ? "message.mythic_companions.sitting" : "message.mythic_companions.following",
                     mob.getDisplayName()
                 ),
                 true
@@ -185,6 +190,14 @@ public final class CompanionEvents {
             return;
         }
 
+        if (CompanionData.isStaying(mob)) {
+            CompanionData.clearDefenseTarget(mob);
+            mob.setTarget(null);
+            mob.getNavigation().stop();
+            mob.setDeltaMovement(0.0D, 0.0D, 0.0D);
+            return;
+        }
+
         if (mob.tickCount % 10 != 0) {
             return;
         }
@@ -198,12 +211,6 @@ public final class CompanionEvents {
                 mob.setTarget(null);
                 defense = Optional.empty();
             }
-        }
-
-        if (CompanionData.isStaying(mob)) {
-            mob.getNavigation().stop();
-            mob.setDeltaMovement(0.0D, mob.getDeltaMovement().y, 0.0D);
-            return;
         }
 
         Optional<UUID> ownerId = CompanionData.owner(mob);

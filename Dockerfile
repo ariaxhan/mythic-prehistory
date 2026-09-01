@@ -31,7 +31,7 @@ WORKDIR /src/companion-mod
 COPY companion-mod/ ./
 RUN set -eux; \
     ./gradlew --no-daemon clean test build; \
-    test -f build/libs/mythic-companions-1.2.0.jar
+    test -f build/libs/mythic-companions-1.2.1.jar
 
 # -----------------------------------------------------------------------------
 # Stage 2: install the Forge dedicated server, then lay our pack over it.
@@ -72,8 +72,8 @@ COPY mods/ /opt/mc/mods/
 
 # Pack-owned source mod. Both server and clients require this same jar.
 COPY --from=companion_build \
-    /src/companion-mod/build/libs/mythic-companions-1.2.0.jar \
-    /opt/mc/mods/mythic-companions-1.2.0.jar
+    /src/companion-mod/build/libs/mythic-companions-1.2.1.jar \
+    /opt/mc/mods/mythic-companions-1.2.1.jar
 
 # Server-only, GPL-3.0: Silk Touch pickaxes can relocate spawners while
 # preserving mob data. Pin the artifact so rebuilding Prism's ignored mods/

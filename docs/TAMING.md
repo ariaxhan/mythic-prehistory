@@ -104,9 +104,11 @@ already have native ownership. Feed them repeatedly; calm small animals bond qui
 apex predators demand more food. Once bonded, they do not attack players, follow their owner,
 defend against mobs, and persist through relogs.
 
-**Sneak-right-click with an empty hand** to toggle follow/stay. "Stay" freezes navigation
-and horizontal movement, but most original dinosaur models do not contain a sitting
-animation, so they remain standing. Feed the same diet again to heal four health.
+**Sneak-right-click with an empty hand** to toggle follow/sit. Sitting freezes all movement,
+cancels defense, and prevents following until the owner sneak-right-clicks again. The state
+persists through relogs. Most original dinosaur models do not contain a sitting animation,
+so they remain visually standing while functionally sitting. Feed the same diet again to
+heal four health.
 
 | Diet | Accepted food |
 |---|---|
@@ -155,7 +157,8 @@ them from stranding themselves on land.
 
 Only the **Rideable Trike** and **saddled Hippocampus** are rideable among ShineaL's
 prehistoric creatures. Diet bonding adds ownership, follow, defense, healing, and stay;
-it does not invent riding support for the other entity classes.
+it does not invent riding support for the other entity classes. Every Mythic-bonded species
+in the table supports the same sneak-right-click sit command.
 
 Non-dinosaur creatures remain unchanged.
 

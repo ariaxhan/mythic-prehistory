@@ -2,6 +2,12 @@
 
 All player-visible Mythic Prehistory releases are recorded here. Versions follow [Semantic Versioning](docs/VERSIONING.md).
 
+## [Unreleased]
+
+### Changed
+
+- Every Mythic-bonded prehistoric companion can be commanded to sit with an empty-hand sneak-right-click. Sitting persists through relogs, freezes movement every tick, and disables following and defense until released.
+
 ## [1.3.0] - 2026-08-31
 
 Difficulty expansion, new bosses and dungeons, stronger hostile mobs, repaired high-tier rewards, and the first public automatic-update release.
@@ -36,6 +42,7 @@ Difficulty expansion, new bosses and dungeons, stronger hostile mobs, repaired h
 
 ### Fixed and hardened
 
+- Corrected escaped quoting in the Prism pre-launch command. The original bootstrap could make Windows Prism concatenate `javaw.exe` and `-jar`, preventing the updater from starting.
 - Selected Champions 2.1.12.7 after 2.1.10.2 crashed dedicated Forge without KubeJS.
 - Fixed the Docker build context so the expansion downloader is included in server images.
 - Fixed expansion validation to check the eight lock-listed artifacts rather than comparing them with the complete 121-jar server directory.
