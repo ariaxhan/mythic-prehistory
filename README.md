@@ -2,6 +2,9 @@
 
 Minecraft 1.20.1 Forge modpack, dedicated-server image, automatic client updater, and player documentation.
 
+- [Changelog](CHANGELOG.md)
+- [Versioning and release policy](docs/VERSIONING.md)
+
 ## Players
 
 - [Windows migration and troubleshooting guide](docs/JOIN-WINDOWS.md)
